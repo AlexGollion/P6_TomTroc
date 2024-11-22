@@ -2,10 +2,38 @@
 
 spl_autoload_register(function($className)
 {
-    $path = PATH . "\\" . $className . '.php';
-
-    if (file_exists($path))
+    //echo $className;
+    $classPath = explode("TomTroc", $className);
+    
+    if (count($classPath) == 2)
     {
-        require $path;
+        $path = PATH . $classPath[1] . '.php';
+        //echo $path;
+        if (file_exists($path))
+        {
+            require $path;
+        }
+        else
+        {
+            throw new Exception('Erreur');
+        }
     }
+    else if (count($classPath) == 3)
+    {
+        $path = PATH . $classPath[2] . '.php';
+        //echo $path;
+        if (file_exists($path))
+        {
+            require $path;
+        }
+        else
+        {
+            throw new Exception('Erreur');
+        }
+    }
+    else
+    {
+        throw new Exception('Erreur');
+    }
+
 });

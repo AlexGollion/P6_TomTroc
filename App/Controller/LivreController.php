@@ -7,6 +7,6 @@ class LivreController extends AbstractController
 
     public function home()
     {
-        echo "Page d'acceuil";
+        $this->view('Acceuil', 'home');
     }
 }
