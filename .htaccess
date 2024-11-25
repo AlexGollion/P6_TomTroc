@@ -1,0 +1,6 @@
+RewriteEngine on
+
+RewriteRule ^/?$ index.php?action=home [L]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ([a-z]+) index.php?action=$1
