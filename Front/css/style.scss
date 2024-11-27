@@ -12,32 +12,33 @@ header {
     align-items: center;
     justify-content: space-around;
     background-color: #F5F3EF;
+
+    div {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
 }
 
-header > div {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-}
 
 nav {
     display: flex;
     justify-content: space-between;
+    a {
+        text-decoration: none;
+        color: #292929;
+        padding: 10px;
+    }
 }
 
-a {
-    text-decoration: none;
-    color: #292929;
-    padding: 10px;
-}
 
 section {
     display: flex;
     justify-content: center;
 }
 
-.join, .marche, .valeur
+.join, .marche, .valeur, .error, .connexion
 {
     background-color: #F5F3EF;
 }
@@ -55,4 +56,19 @@ section {
 
 button {
     background-color: #00AC66;
+}
+
+.error {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.connexion {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }

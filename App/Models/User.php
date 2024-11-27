@@ -1,12 +1,14 @@
 <?php
 
+namespace TomTroc\App\Models;
+
 class User extends AbstractEntity
 {
     private string $pseudo;
     private string $password;
     private string $email;
     private string $photo;
-    private ?DateTime $dateCreation;
+    private ?\DateTime $dateCreation;
 
     public function setPseudo(string $pseudo) : void
     {
@@ -38,9 +40,16 @@ class User extends AbstractEntity
         return $this->email;
     }
 
-    public function setPhoto(string $photo) : void
+    public function setPhoto(string $photo = null) : void
     {
-        $this->photo = $photo;
+        if (isset($photo))
+        {
+            $this->photo = $photo;
+        }
+        else
+        {
+            $this->photo = "";
+        }
     }
 
     public function getPhoto() : string
@@ -48,13 +57,19 @@ class User extends AbstractEntity
         return $this->photo;
     }
 
-    public function setDateCreation(DateTime $dateCreation) : void
+    public function setDateCreationDateTime(\DateTime $dateCreation) : void
     {
         $this->dateCreation = $dateCreation;
     }
-
-    public function getDateCreation() : DateTime
+    
+    public function setDateCreation(string $dateCreation) : void
     {
-        return $this->dateCreation;
+        $dateTime = \DateTime::createFromFormat('Y-m-d H:i:s', $dateCreation);
+        $this->dateCreation = $dateTime;
+    }
+
+    public function getDateCreation() : string
+    {
+        return $this->dateCreation->format('Y-m-d H:i:s');
     }
 }

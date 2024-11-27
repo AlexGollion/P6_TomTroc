@@ -38,8 +38,7 @@ class View
         }
         else
         {
-            throw new Exception("La vue '$viewPath' est introuvable.");
-            
+            throw new \Exception("La vue '$viewPath' est introuvable.");
         }
     }
 }

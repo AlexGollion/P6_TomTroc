@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TomTroc</title>
-    <link rel="stylesheet" href="./Front/css/style.css">
+    <link rel="stylesheet" href="./Front/css/style.scss">
 </head>
 
 <body>
 
-    <?= TomTroc\Front\Component::header(isset($_SESSION['user'])); ?>
+    <?= TomTroc\Front\Components\Component::render(['component' => 'header']); ?>
 
     <main>    
         <?= $content /* Ici est affiché le contenu réel de la page. */ ?>
