@@ -1,5 +1,6 @@
 body {
     margin: 0px;
+    background-color: #F5F3EF;
 }
 
 h3 {
@@ -71,4 +72,25 @@ button {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+}
+
+.compteInfo {
+    
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+
+    .compte, .infoPerso {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: #ffffff;
+    }
+}
+
+.tableau {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #ffffff;
 }

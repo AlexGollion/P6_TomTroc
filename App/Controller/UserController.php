@@ -82,6 +82,29 @@ class UserController extends AbstractController
 
         $this->view('Accueil', 'home');
     }
+
+    public function moncompte() : void
+    {
+        $id = $_SESSION['idUser'];
+        
+        if (!isset($id))
+        {
+            throw new \Exception("L'utilisateur n'a pas d'id");
+        }
+
+        $userManager = new Models\UserManager();
+        $user = $userManager->getUserById($id);
+
+        if (!$user)
+        {
+            throw new \Exception("L'utilisateur demandé n'existe pas.");
+        }
+
+        $livreManager = new Models\LivreManager();
+        $livres = $livreManager->getAllLivres();
+
+        $this->view('Mon compte', 'monCompte', ["user" => $user, "livres" => $livres]);
+    }
 }
 
 ?>

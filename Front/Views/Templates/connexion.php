@@ -30,7 +30,7 @@
     $params = array("component" => "form", "formData" => $formData);
 ?>
 
-<h1>Inscription</h1>
+<h1><?= $title ?></h1>
 
 <?= TomTroc\Front\Components\Component::render($params); ?>
 

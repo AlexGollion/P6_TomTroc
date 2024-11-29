@@ -16,7 +16,7 @@ class Router
         }
         else 
         {
-            echo "non";
+            throw new \Exception('Problème');
         }
     }
 
@@ -29,11 +29,12 @@ class Router
     {
         if (array_key_exists($action, self::$routes))
         {
+            
             self::callController(self::$routes[$action]["action"], self::$routes[$action]["controller"]);
         }
         else
         {
-            echo "non";
+            throw new \Exception('Routes inconnue');
         }
     }
 
