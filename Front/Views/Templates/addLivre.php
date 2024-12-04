@@ -1,6 +1,6 @@
 <?php 
     $formData = array (
-        "action" => "addlivre",
+        "action" => "addLivre",
         "label" => ["Titre", "Auteur", "Image", "Description", "Statut"],
         "input" => ["titre", "auteur", "image", "description", "statut"],
         "type" => ["text", "text", "file", "text", "text"],

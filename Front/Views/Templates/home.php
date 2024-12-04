@@ -20,8 +20,9 @@
 <section class="marche">
     <h2>Comment ça marche ?</h2>
     <button>Voir tous les livres</button>
-    <img src="./Front/images/clay-banks-accueil.png">
 </section>
+
+<img src="./Front/images/clay-banks-accueil.png">
 
 <section class="valeur">
     <h2>Nos valeurs</h2>

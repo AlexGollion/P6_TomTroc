@@ -10,7 +10,7 @@
     $paramsForm = array("component" => "form", "formData" => $formData);
 
     $buttonData = array (
-        "action" => "showaddlivre",
+        "action" => "showAddLivre",
         "value" => "Ajouter un livre"
     );
     $paramsBtn = array("component" => "button", "buttonData" => $buttonData);
@@ -45,14 +45,40 @@
             <th>Action</th>
         </tr>
 
-        <?php foreach($livres as $index => $livre) { ?>
+        <?php foreach($livres as $index => $livre) { 
+                $deleteBtn = array (
+                    "component" => "button",
+                    "buttonData" => [
+                    "action" => "deleteLivre",
+                    "value" => "supprimer",
+                    "hidden" => [
+                        ["name" => "idLivre", "value" => $livre->getId()],
+                        ["name" => "image", "value" => $livre->getImage()]
+                        ]
+                    ]
+                );
+                $editBtn = array (
+                    "component" => "button",
+                    "buttonData" => [
+                    "action" => "editLivre",
+                    "value" => "éditer",
+                    "hidden" => [
+                        ["name" => "idLivre", "value" => $livre->getId()]
+                        ]
+                    ]
+                );
+
+        ?>
             <tr>
-                <td><img src=<?= "./Front/images/livres/" . $livre["image"] ?>></td>
-                <td><?= $livre["titre"] ?></td>
-                <td><?= $livre["auteur"] ?></td>
-                <td><?= $livre["description"] ?></td>
-                <td><?= $livre["statut"] ?></td>
-                <td></td>
+                <td><img src=<?= "./Front/images/livres/" . $livre->getImage() ?>></td>
+                <td><?= $livre->getTitre() ?></td>
+                <td><?= $livre->getAuteur() ?></td>
+                <td><?= $livre->getDescription() ?></td>
+                <td><?= $livre->getStatut() ?></td>
+                <td>
+                    <?= TomTroc\Front\Components\Component::render($editBtn) ?>
+                    <?= TomTroc\Front\Components\Component::render($deleteBtn) ?>
+                </td>
             </tr>
         <?php } ?>
     </table>

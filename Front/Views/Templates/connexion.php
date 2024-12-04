@@ -10,7 +10,7 @@
             "submit" => "S'inscrire"
         );
         $span = "Déjà inscrit ?";
-        $action = "showconnexion";
+        $action = "showConnexion";
         $aText = "Connectez-vous";
     }
     else
@@ -24,7 +24,7 @@
             "submit" => "Se connecter"
         );
         $span = "Pas de compte ?";
-        $action = "showinscription";
+        $action = "showInscription";
         $aText = "Inscrivez-vous";
     }
     $params = array("component" => "form", "formData" => $formData);

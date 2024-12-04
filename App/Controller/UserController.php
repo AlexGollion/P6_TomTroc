@@ -6,12 +6,12 @@ use TomTroc\Services as Services;
 
 class UserController extends AbstractController
 {
-    public function showinscription() : void
+    public function showInscription() : void
     {
         $this->view('Inscrption', 'connexion', ["inscription" => true]);
     }
     
-    public function showconnexion() : void
+    public function showConnexion() : void
     {
         $this->view('Connexion', 'connexion', ["inscription" => false]);
     }
@@ -83,7 +83,7 @@ class UserController extends AbstractController
         $this->view('Accueil', 'home');
     }
 
-    public function moncompte() : void
+    public function monCompte() : void
     {
         $id = $_SESSION['idUser'];
         
@@ -92,6 +92,27 @@ class UserController extends AbstractController
             throw new \Exception("L'utilisateur n'a pas d'id");
         }
 
+        $data = $this->compte($id);
+
+        $this->view('Mon compte', 'monCompte', $data);
+    }
+
+    public function comptePublic() : void
+    {
+        $id = Services\Utils::request('userId');
+
+        if (!isset($id))
+        {
+            throw new \Exception("L'utilisateur n'a pas d'id");
+        }
+
+        $data = $this->compte($id);
+
+        $this->view('Compte public', 'comptePublic', $data);
+    }
+
+    private function compte(int $id) : array
+    {
         $userManager = new Models\UserManager();
         $user = $userManager->getUserById($id);
 
@@ -101,9 +122,9 @@ class UserController extends AbstractController
         }
 
         $livreManager = new Models\LivreManager();
-        $livres = $livreManager->getAllLivres();
+        $livres = $livreManager->getLivresByUserId($id);
 
-        $this->view('Mon compte', 'monCompte', ["user" => $user, "livres" => $livres]);
+        return ["livres" => $livres, "user" => $user];
     }
 }
 

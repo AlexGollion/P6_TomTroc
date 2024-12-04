@@ -11,5 +11,5 @@
         <?php } else { ?>
             <input type=<?= $formData["type"][$index] ?> id=<?= $formData["input"][$index] ?> name=<?= $formData["input"][$index] ?> />
     <?php } } ?>
-    <input type="submit" value= <?= $formData["submit"] ?> />
+    <input type="submit" value= "<?= $formData["submit"] ?> "/>
 </form>

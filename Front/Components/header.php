@@ -1,16 +1,16 @@
 <?php
-    $navGen = array(['title' => 'Accueil', 'action' => 'home'], ['title' => 'Nos livres à l\'échange', 'action' => 'afficherlivres']);
+    $navGen = array(['title' => 'Accueil', 'action' => 'home'], ['title' => 'Nos livres à l\'échange', 'action' => 'showAllLivres']);
     if (isset($_SESSION['user']))
     {
         $navConnected = array(
             ['title' => 'Messagerie', 'action' => 'messagerie'], 
-            ['title' => 'Mon Compte', 'action' => 'moncompte'], 
+            ['title' => 'Mon Compte', 'action' => 'monCompte'], 
             ['title' => 'Déconnexion', 'action' => 'deconnexion']
         );
     }
     else
     {
-        $navConnected = array(['title' => 'Connexion', 'action' => 'showinscription']);        
+        $navConnected = array(['title' => 'Connexion', 'action' => 'showInscription']);        
     }
     require('nav.php'); 
 ?>

@@ -19,9 +19,59 @@ class LivreManager extends AbstractEntityManager
 
     public function getAllLivres() : array
     {
-        $sql = "SELECT * FROM livre";
+        $sql = "SELECT L.auteur, L.titre, L.id, L.image, U.pseudo FROM livre L INNER JOIN user U ON L.user_id = U.id;";
         $result = $this->db->query($sql);
-        $livres = $result->fetchAll();
+        $livres = [];
+        while ($data = $result->fetch())
+        {
+            $livre = new Livre($data);
+            array_push($livres, ["livre" => $livre, "user" => $data["pseudo"]]);
+        }
         return $livres;
+    }
+
+    public function getLivresByUserId(int $userId) : array
+    {
+        $sql = "SELECT * FROM livre WHERE user_id = :user_id";
+        $result = $this->db->query($sql, ['user_id' => $userId]);
+        $livres = [];
+        while ($data = $result->fetch())
+        {
+            $livre = new Livre($data);
+            array_push($livres, $livre);
+        }
+        return $livres;
+    }
+
+    public function getLivreById(int $id) : ?Livre
+    {
+        $sql = "SELECT * FROM livre WHERE id = :id";
+        $result = $this->db->query($sql, ['id' => $id]);
+        $res = $result->fetch();
+        if ($res)
+        {
+            $livre = new Livre($res);
+            return $livre;
+        }
+        return null;
+    }
+
+    public function deleteLivreById(int $id) : void
+    {
+        $sql = "DELETE FROM livre WHERE id = :id";
+        $this->db->query($sql, ['id' => $id]);
+    }
+
+    public function updateLivre(Livre $livre) : void
+    {
+        $sql = "UPDATE livre SET titre = :titre, auteur = :auteur, image = :image, description = :description, statut = :statut WHERE id = :id";
+        $this->db->query($sql, [
+            'titre' => $livre->getTitre(),
+            'auteur' => $livre->getAuteur(),
+            'image' => $livre->getImage(),
+            'description' => $livre->getDescription(),
+            'statut' => $livre->getStatut(),
+            'id' => $livre->getId()
+        ]);
     }
 }
