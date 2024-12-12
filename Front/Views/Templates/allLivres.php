@@ -4,13 +4,11 @@
     <?php foreach($livres as $index => $livre) {  ?>
         <form action="detailLivre" method="post">
             <input type="hidden" name="idLivre" value="<?= $livre["livre"]->getId() ?>" />
-            <button>
-                <div class="card">
-                    <img src=<?= "./Front/images/livres/" . $livre["livre"]->getImage() ?>>
-                    <h2><?= $livre["livre"]->getTitre() ?></h2>
-                    <h3><?= $livre["livre"]->getAuteur() ?></h3>
-                    <span>Vendu par <?= $livre["user"] ?></span>
-                </div>
+            <button class="card">
+                <img src=<?= "./Front/images/livres/" . $livre["livre"]->getImage() ?>>
+                <h2><?= $livre["livre"]->getTitre() ?></h2>
+                <h3><?= $livre["livre"]->getAuteur() ?></h3>
+                <p>Vendu par : <?= $livre["user"] ?></p>
             </button>
         </form>
     <?php } ?>

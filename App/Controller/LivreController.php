@@ -115,9 +115,8 @@ class LivreController extends AbstractController
         }
 
         $livreManager = new Models\LivreManager();
-        $data = $livreManager->getLivreById($idLivre);
-
-        $this->view("Detail livre", "detailLivre", $data);
+        $data = $livreManager->getLivreAndUserById($idLivre);
+        $this->view("Detail livre", "detailLivre", ["livre" => $data[0]["livre"], "user" => $data[0]["user"]]);
     }
 
     public function editLivre() : void

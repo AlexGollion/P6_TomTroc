@@ -1,10 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
 body {
     margin: 0px;
 }
 
-.header, .join, .marche, .valeur, .error, .dernierAjout, .connexion, .livres{
-    padding-left: 10%;
-    padding-right: 10%;
+h1 {
+    font-size: 30px;
+    font-weight: lighter;
+    margin-bottom: 0px;
+}
+
+h2 {
+    font-weight: lighter;
+}
+
+h3 {
+    color: #00AC66;
+}
+
+header, .join, .marche, .valeur, .error, .dernierAjout, .livres, .monCompte, .tableau, .editLivre, .messagerie {
+    padding-left: 5%;
+    padding-right: 5%;
+    font-family: 'Playfair Display';
 }
 
 img {
@@ -16,14 +33,44 @@ header {
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-between;
     background-color: #F5F3EF;
-
+    padding-left: 6%;
+    padding-right: 6%;
+    
     div {
         display: flex;
         flex-direction: row;
         align-items: center;
         justify-content: space-between;
+
+        .logo {
+            position: relative;
+            background-color: #00AC66;
+            color: white;
+            border-radius: 10px;
+            padding: 5px;
+            margin-right: 15px;
+            width: 35px;
+            height: 35px;
+
+            .logoP1, .logoP2 {
+                position: absolute;
+                font-size: 23px;
+                margin: 0px;
+                font-weight: bold;
+            }
+
+            .logoP1 {
+                top: 2px;
+                left: 8px;
+            }
+
+            .logoP2 {
+                bottom: 5px;
+                right: 8px;
+            }
+        }
     }
 }
 
@@ -31,10 +78,13 @@ header {
 nav {
     display: flex;
     justify-content: space-between;
+    margin-left: 50px;
+
     a {
         text-decoration: none;
         color: #292929;
         padding: 10px;
+        margin-left: 20px;
     }
 }
 
@@ -53,12 +103,67 @@ section {
     background-color: #FAF9F7;
 }
 
+.greenBtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #00AC66;
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 25px;
+    
+    input {
+        border: none;
+        background-color: #00AC66;
+        color: white;
+        font-size: 16px;
+    }
+}
+
+.whiteBtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    border: 2px solid;
+    border-color: #00AC66;
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 25px;
+    
+    input {
+        border: none;
+        background-color: white;
+        color: #00AC66;
+        font-size: 16px;
+    }
+}
+
 .join {
     flex-direction: row;
-    justify-content: space-around;
+    align-items: center;
+    padding-top: 40px;
+    padding-bottom: 40px;
+
+    div {
+        display: flex;
+        flex-direction: column;
+        width: 25%;
+        margin-right: 5%;
+
+        p {
+            font-size: 16px;
+            font-weight: lighter;
+        }
+
+        .greenBtn {
+            width: 25%;
+        }
+    }
 
     img {
-        width: 20%;
+        width: 30%;
+        margin-left: 5%;
     }
 }
 
@@ -80,39 +185,15 @@ button {
     padding: 20px;
 }
 
-.connexion {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
 
-.compteInfo {
-    
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-
-    .compte, .infoPerso {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        background-color: #FAF9F7;
-    }
-}
-
-.tableau {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: #FAF9F7;
-}
 
 .livres {
     display: flex;
     flex-direction: column;
     background-color: #FAF9F7;
-
+    align-items: center;
+    padding: 5%;
+    
     .grilleLivre {
         display: grid;
         grid-template-columns: repeat(4, 200px);
@@ -120,32 +201,442 @@ button {
         
         .card {
             width: 100%;
-        
+            padding: 0px;
+            border: none;
+            background-color: white;
+            
             img {
                 width: 100%;
+            }
+            
+            h2, h3, p {
+                display: flex;
+                justify-content: left;
+                padding-left: 15px;
+                margin: 0px;
+            }
+            
+            h2 {
+                font-size: 16px;
+                margin-top: 15px;
+            }
+            
+            h3, p {
+                color: #A6A6A6;
+            }
+            
+            h3 {
+                font-size: 14px;
+                font-weight: normal;
+                margin-top: 8px;
+            }
+            
+            p {
+                font-size: 10px;
+                font-style: italic;
+                margin-top: 15px;
+                margin-bottom: 15px;
             }
         }
     }
 }
 
 .detailLivre {
-
     display: flex;
-    justify-content: space-around;
+    background-color: #FAF9F7;
+    
     img {
-        width: 20%;
+        width: 50%;
     }
-
+    
     .infoLivre {
         display: flex;
         flex-direction: column;
-        align-items: center;
-        justify-content: center;
+        justify-content: normal;
+        width: 50%;
+        padding: 5%;
+        padding-right: 10%;
+        
+        #auteur {
+            color: #A6A6A6;
+            font-size: 16px;
+        }
+        
+        h2 {
+            font-size: 12px;
+        }
+        
+        #description {
+            font-size: 14px;
+        }
+        
+        .proprietaire {
+            background-color: white;
+            border: 1px white;
+            border-radius: 35%;
+            padding: 10px;
+            width: 20%;
+            
+            button {
+                background-color: white;
+                border: none;
+                font-size: 14px;
+            }
+        }
     }
 }  
+
+.connexion {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: #FAF9F7;
+    
+    div, img {
+        width: 50%;
+    }
+    
+    div {
+        display: flex;
+        flex-direction: column;
+        padding-left: 10%;
+        
+        h1 {
+            margin-bottom: 25px;
+            font-size: 36px;
+        }
+        
+        form {
+            display: flex;
+            flex-direction: column;
+            width: 50%;
+            
+            label {
+                margin-top: 15px;
+                margin-bottom: 10px;
+                color: #A6A6A6;
+                font-size: 14px;
+            }
+            
+            input {
+                border: 1px solid #F0F0F0;
+                border-radius: 10px;
+                height: 50px;
+            }
+            
+            .submit {
+                background-color: #00AC66;
+                color: white;
+                font-size: 16px;
+                border-radius: 10px;
+                margin-top: 25px;
+                padding: 5px;
+            }
+        }
+        
+        p {
+            font-size: 16px;
+            
+            a {
+                text-decoration: underline;
+                color: black;
+            }
+        }
+    }
+}
+
+.monCompte {
+    display: flex;
+    flex-direction: column;
+    background-color: #FAF9F7;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    
+    .compteInfo {
+        
+        display: flex;
+        flex-direction: row;
+        
+        .compte, .infoPerso {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: white;
+            width: 48%;
+            border-radius: 20px;
+        }
+
+        .infoPerso {
+            margin-left: 4%;
+
+            h2 {
+                font-size: 16px;
+                font-weight: 400;
+                width: 50%;
+                margin-bottom: 25px;
+                margin-top: 25px;
+            }
+
+            form {
+                display: flex;
+                flex-direction: column;
+                width: 50%;
+
+                label {
+                    font-size: 14px;
+                    color: #A6A6A6;
+                    margin-top: 20px;
+                }
+
+                input {
+                    font-size: 14px;
+                    height: 50px;
+                    background-color: #EDF2F6;
+                    border: none;
+                    margin-top: 10px;
+                    border-radius: 10px;
+                    padding: 5px;
+                    padding-left: 10px;
+                }
+
+                .submit {
+                    background-color:  #F5F3EF;
+                    color: #00AC66;
+                    border: 2px solid #00AC66;
+                    font-size: 16px;
+                    border-radius: 10px;
+                    margin-top: 25px;
+                    margin-bottom: 10px;
+                    padding: 5px;
+                    font-weight: bold;
+                }
+            }
+        }
+    }
+}
+
+
+.tableau {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #FAF9F7;
+    padding-top: 10px;
+    padding-bottom: 30px;
+
+    table {
+        background-color: white;
+        border-radius: 20px;
+        border: none;
+        padding-top: 10px;
+        margin-top: 20px;
+        width: 100%;
+
+        tr {
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+            border: none;
+
+            th {
+                font-size: 14px;
+                width: 20%;
+                display: flex;
+                justify-content: start;
+                padding: 2%;
+                padding-bottom: 10px;
+                border-bottom: 1px solid #F5F3EF;
+            }
+
+            td {
+                display: flex;
+                flex-direction: row;
+                justify-content: start;
+                align-items: center;
+                width: 20%;
+                font-size: 14px;
+                padding: 2%;
+
+                img {
+                    width: 50%;
+                }
+            }
+
+            .first {
+                padding-left: 4%;
+            }
+
+            .disponible {                
+                p {
+                    color: white;
+                    background-color: #6DC5A1;
+                    border-radius: 20px;
+                    padding-top: 5px;
+                    padding-bottom: 5px;
+                    padding-left: 15px;
+                    padding-right: 15px;
+                }
+            }
+
+            .indisponible {
+                background-color: red;
+                border-radius: 20px;
+                width: 20%;
+                height: 10%;
+            }
+
+            .supprimerBtn {
+                border: none;
+                margin-left: 10px;
+
+                input {
+                    color: #CB2D2D;
+                    border: 0px;
+                    padding: 0px;
+                    text-decoration: underline;
+                    background-color: inherit;
+                }
+            }
+
+            .editBtn {
+                border: none;
+                margin-right: 10px;
+
+                input {
+                    color: black;
+                    border: 0px;
+                    padding: 0px;
+                    text-decoration: underline;
+                    background-color: inherit;
+                }
+            }
+        }
+    }
+
+    .tableauColorA {
+        background-color: white;
+    }
+
+    .tableauColorB {
+        background-color: #EDF2F6;
+    }
+}
+
+.editLivre {
+    display: flex;
+    flex-direction: column;
+    background-color: #FAF9F7;
+
+    form {
+        display: flex;
+        flex-direction: row;
+        background-color: white;
+        border-radius: 20px;
+        width: 96%;
+        margin-top: 5%;
+        margin-bottom: 5%;
+        padding: 3%;
+        padding-right: 0%;
+        padding-left: 4%;
+
+        img {
+            width: 80%;
+        }
+
+        .imgLivre, .infoLivre {
+            width: 48%;
+            display: flex;
+            flex-direction: column;
+            justify-content: start;
+        }
+        
+        .imgLivre {
+
+            label {
+                font-size: 14px;
+                color: #A6A6A6;
+                margin-top: 25px;
+                margin-bottom: 10px;
+            }
+        }
+
+        .infoLivre {
+            display: flex;
+            flex-direction: column;
+            margin-left: 15%;
+
+            label {
+                font-size: 14px;
+                color: #A6A6A6;
+                margin-top: 25px;
+            }
+
+            input, textarea, select {
+                font-size: 14px;
+                height: 50px;
+                background-color: #EDF2F6;
+                border: none;
+                margin-top: 10px;
+                border-radius: 10px;
+                padding: 5px;
+                padding-left: 10px;
+                width: 75%;
+            }
+
+            .submit {
+                background-color: #00AC66;
+                color: white;
+                font-size: 16px;
+                border-radius: 10px;
+                margin-top: 35px;
+                padding: 5px;
+                width: 50%;
+            }
+        }
+    }
+}
 
 .messagerie {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    background-color: #F5F3EF;
+    width: 100%;
+    height: 800px;
+
+    .listeConversation {
+        background-color: #FAF9F7;
+        width: 20%;
+    }
+
+    .listeMessage {
+        display: flex;
+        align-items: end;
+        width: 80%;
+        padding: 2%;
+
+        form {
+            width: 100%;
+
+            .message {
+                border: none;
+                width: 50%;
+                height: 40px;
+                border: 20px;
+            }
+            
+            .submit {
+                background-color: #00AC66;
+                color: white;
+                font-size: 16px;
+                border: none;
+                border-radius: 10px;
+                margin-top: 35px;
+                padding: 5px;
+                width: 10%;
+                height: 40px;
+            }
+        }
+    }
 }

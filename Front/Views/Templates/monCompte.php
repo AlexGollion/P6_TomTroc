@@ -11,33 +11,35 @@
 
     $buttonData = array (
         "action" => "showAddLivre",
-        "value" => "Ajouter un livre"
+        "value" => "Ajouter un livre",
+        "class" => "greenBtn"
     );
     $paramsBtn = array("component" => "button", "buttonData" => $buttonData);
 ?>
 
-<h1>Mon compte</h1>
+<section class="monCompte">
+    <h1>Mon compte</h1>
 
-<div class="compteInfo">
-    <section class="compte">
-        <h2><?= $user->getPseudo(); ?></h2>
-        <p>Membre depuis <?= $user->getDateCreation(); ?></p>
-        <span>Bibliothèque</span>
+    <section class="compteInfo">
+        <div class="compte">
+            <h2><?= $user->getPseudo(); ?></h2>
+            <p>Membre depuis <?= $user->getDateCreation(); ?></p>
+            <span>Bibliothèque</span>
+        </div>
+
+        <div class="infoPerso">
+            <h2>Vos informations personnelles</h2>
+            <?= TomTroc\Front\Components\Component::render($paramsForm) ?>
+        </div>
     </section>
-
-    <section class="infoPerso">
-        <h2>Vos informations personnelles</h2>
-        <?= TomTroc\Front\Components\Component::render($paramsForm) ?>
-    </section>
-</div>
-
+</section>
 
 <section class="tableau">
     <?= TomTroc\Front\Components\Component::render($paramsBtn) ?>
 
     <table>
         <tr>
-            <th>Photo</th>
+            <th class="first">Photo</th>
             <th>Titre</th>
             <th>Auteur</th>
             <th>Description</th>
@@ -52,9 +54,10 @@
                     "action" => "deleteLivre",
                     "value" => "supprimer",
                     "hidden" => [
-                        ["name" => "idLivre", "value" => $livre->getId()],
-                        ["name" => "image", "value" => $livre->getImage()]
-                        ]
+                            ["name" => "idLivre", "value" => $livre->getId()],
+                            ["name" => "image", "value" => $livre->getImage()]
+                        ],
+                    "class" => "supprimerBtn " . TomTroc\Services\Utils::changeColor($index) 
                     ]
                 );
                 $editBtn = array (
@@ -63,18 +66,19 @@
                     "action" => "editLivre",
                     "value" => "éditer",
                     "hidden" => [
-                        ["name" => "idLivre", "value" => $livre->getId()]
-                        ]
+                            ["name" => "idLivre", "value" => $livre->getId()]
+                        ],
+                    "class" => "editBtn " . TomTroc\Services\Utils::changeColor($index)
                     ]
                 );
 
         ?>
-            <tr>
-                <td><img src=<?= "./Front/images/livres/" . $livre->getImage() ?>></td>
+            <tr class="<?= TomTroc\Services\Utils::changeColor($index) ?>">
+                <td class="first"><img src=<?= "./Front/images/livres/" . $livre->getImage() ?>></td>
                 <td><?= $livre->getTitre() ?></td>
                 <td><?= $livre->getAuteur() ?></td>
                 <td><?= $livre->getDescription() ?></td>
-                <td><?= $livre->getStatut() ?></td>
+                <td class="<?= $livre->getStatut() ?>"><p><?= $livre->getStatut() ?></p></td>
                 <td>
                     <?= TomTroc\Front\Components\Component::render($editBtn) ?>
                     <?= TomTroc\Front\Components\Component::render($deleteBtn) ?>

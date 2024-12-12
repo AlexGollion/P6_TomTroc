@@ -1,14 +1,30 @@
-<?php 
-    $formData = array (
-        "action" => "addLivre",
-        "label" => ["Titre", "Auteur", "Image", "Description", "Statut"],
-        "input" => ["titre", "auteur", "image", "description", "statut"],
-        "type" => ["text", "text", "file", "text", "text"],
-        "submit" => "Ajouter ce livre"
-    );
-    $paramsForm = array("component" => "form", "formData" => $formData);
-?>
+<section class="editLivre">
+    <h1>Ajouter un livre</h1>
+    <form action="updateLivre" method="post">
+        <section class="imgLivre">
+            <label for="photo">Photo</label>
+            <input type="file" id="image" name="image"/>
+        </section>
 
-<h1>Ajouter un livre</h1>
-
-<?= TomTroc\Front\Components\Component::render($paramsForm) ?>
+        <section class="infoLivre">
+            <input type="hidden" name="idLivre" id="idLivre"/>
+            <label for="titre">Titre</label>
+            <input type="text" id="titre" name="titre"/>
+            <label for="auteur">Auteur</label>
+            <input type="text" id="auteur" name="auteur"/>
+            <label for="description">Commentaire</label>
+            <textarea id="description" name="description">
+            </textarea>
+            <label for="statut">Disponibilité</label>
+            <select name="statut" id="statut">
+                <option value="true">
+                    Disponible
+                </option>
+                <option value="false">
+                    Indisponible
+                </option>
+            </select>
+            <input type="submit" value="Valider" class="submit"/>
+        </section>
+    </form>
+</section>

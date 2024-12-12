@@ -56,9 +56,16 @@ class Livre extends AbstractEntity
         $this->statut = $statut;
     }
 
-    public function getStatut() : bool
+    public function getStatut() : string
     {
-        return $this->statut;
+        if ($this->statut)
+        {
+            return "disponible";
+        }
+        else
+        {
+            return "non dispo.";
+        }
     }
     
     public function setUserId(int $userId) : void

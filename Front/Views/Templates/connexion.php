@@ -1,11 +1,11 @@
 <?php  
     if($inscription)
     {
-        $title = "inscription";
+        $title = "Inscription";
         $formData = array (
             "action" => "inscription",
             "label" => ["Pseudo", "Email", "Mot de passe"],
-            "input" => ["pseudo", "Email", "password"],
+            "input" => ["pseudo", "email", "password"],
             "type" => ["text", "email", "password"],
             "submit" => "S'inscrire"
         );
@@ -30,9 +30,14 @@
     $params = array("component" => "form", "formData" => $formData);
 ?>
 
-<h1><?= $title ?></h1>
+<section class="connexion">
+    <div>
+        <h1><?= $title ?></h1>
 
-<?= TomTroc\Front\Components\Component::render($params); ?>
+        <?= TomTroc\Front\Components\Component::render($params); ?>
 
-<span><?= $span ?> </span>
-<a href=<?= $action ?> ><?= $aText ?> </a>
+        <p><?= $span ?> <a href=<?= $action ?> ><?= $aText ?> </a> </p>
+    </div>
+
+    <img src="./Front/images/static/marialaura-gionfriddo-inscription.png">
+</section>

@@ -2,8 +2,12 @@
     $messageBtn = array (
         "component" => "button",
         "buttonData" => [
-            "action" => "messagerie",
-            "value" => "Envoyer un message"
+            "action" => "newMessagerie",
+            "value" => "Envoyer un message",
+            "hidden" => [
+                ["name" => "idUserLivre", "value" => $user->getId()]
+            ],
+            "class" => "greenBtn"
         ]
     );
 ?>
@@ -13,10 +17,11 @@
 
     <section class="infoLivre">
         <h1><?= $livre->getTitre() ?></h1>
-        <span>par <?= $livre->getAuteur() ?></span>
-        <p><?= $livre->getDescription() ?></p>
-        <span>Propiétaire</span>
-        <form action="comptePublic" method="post">
+        <p id="auteur">par <?= $livre->getAuteur() ?></p>
+        <h2>description</h2>
+        <p id="description"><?= $livre->getDescription() ?></p>
+        <h2>Propiétaire</h2>
+        <form action="comptePublic" method="post" class="proprietaire">
             <input type="hidden" name="userId" value="<?= $user->getId() ?>"/>
             <button>
                 <img src=<?= "./Front/images/livres/" . $user->getPhoto() ?>>

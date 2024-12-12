@@ -34,7 +34,7 @@ class UserController extends AbstractController
         $newUser->setEmail($email);
         $newUser->setPassword($hashPassword);
         $dateCreation = new \DateTime();
-        $newUser->setDateCreation($dateCreation);
+        $newUser->setDateCreationDateTime($dateCreation);
 
         $userManager = new Models\UserManager();
         $userManager->createUser($newUser);

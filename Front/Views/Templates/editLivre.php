@@ -1,13 +1,15 @@
-<section class="detailLivre">
+<section class="editLivre">
     <h1>Modifier les informations</h1>
     <form action="updateLivre" method="post">
-        <label for="photo">Photo</label>
-        <img src=<?= "./Front/images/livres/" . $livre->getImage() ?>>
-        <input type="file" id="image" name="image"/>
+        <section class="imgLivre">
+            <label for="photo">Photo</label>
+            <img src=<?= "./Front/images/livres/" . $livre->getImage() ?>>
+            <input type="file" id="image" name="image"/>
+        </section>
 
         <section class="infoLivre">
             <input type="hidden" name="idLivre" id="idLivre" value="<?= $livre->getId() ?>"/>
-            <label for="photo">Titre</label>
+            <label for="titre">Titre</label>
             <input type="text" id="titre" name="titre" value="<?= $livre->getTitre() ?>"/>
             <label for="auteur">Auteur</label>
             <input type="text" id="auteur" name="auteur" value="<?= $livre->getAuteur() ?>"/>
@@ -23,7 +25,7 @@
                     Indisponible
                 </option>
             </select>
+            <input type="submit" value="Valider" class="submit"/>
         </section>
-        <input type="submit" value="Valider"/>
     </form>
 </section>

@@ -17,6 +17,10 @@
 
 <header>
     <div>
+        <div class="logo">
+            <p class="logoP1">T</p>
+            <p class="logoP2">T</p>
+        </div>
         <h3>Tom Troc</h3>
         <?= nav($navGen); ?>
     </div>

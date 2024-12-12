@@ -56,6 +56,25 @@ class LivreManager extends AbstractEntityManager
         return null;
     }
 
+    public function getLivreAndUserById(int $id) : array
+    {
+        $sql = "SELECT L.id as livre_id, titre, auteur, description, image, U.id as user_id, pseudo, photo  FROM livre L INNER JOIN user U on L.user_id = U.id
+            WHERE L.id = :id";
+        $result = $this->db->query($sql, ['id' => $id]);
+        $res = $result->fetch();
+        $data = [];
+        if ($res)
+        {
+            $livre = new Livre($res);
+            $user = new User($res);
+            $livre->setId($res["livre_id"]);
+            $user->setId($res["user_id"]);
+            array_push($data, ["user" => $user, "livre" => $livre]);
+            return $data;
+        }
+        return null;
+    }
+
     public function deleteLivreById(int $id) : void
     {
         $sql = "DELETE FROM livre WHERE id = :id";

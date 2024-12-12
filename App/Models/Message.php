@@ -1,11 +1,13 @@
 <?php
 
+namespace TomTroc\App\Models;
+
 class Message extends AbstractEntity
 {
     private string $content;
-    private ?DateTime $dateCreation;
+    private ?\DateTime $dateCreation;
     private int $expediteurId;
-    private int $destinataireId;
+    private int $conversationId;
 
     public function setContent(string $content) : void
     {
@@ -17,14 +19,20 @@ class Message extends AbstractEntity
         return $this->content;
     }
 
-    public function setDateCreation(DateTime $dateCreation) : void
+    public function setDateCreation(\DateTime $dateCreation) : void
     {
         $this->dateCreation = $dateCreation;
     }
 
-    public function getDateCreation() : DateTime
+    public function setDateCreationString(string $dateCreation) : void
     {
-        return $this->dateCreation;
+        $dateTime = \DateTime::createFromFormat('Y-m-d H:i:s', $dateCreation);
+        $this->dateCreation = $dateTime;
+    }
+
+    public function getDateCreation() : string
+    {
+        return $this->dateCreation->format('Y-m-d H:i:s');
     }
 
     public function setExpediteurId(int $expediteurId) : void
@@ -37,13 +45,13 @@ class Message extends AbstractEntity
         return $this->expediteurId;
     }
     
-    public function setDestinataireId(int $destinataireId) : void
+    public function setConversationId(int $conversationId) : void
     {
-        $this->destinataireId = $destinataireId;
+        $this->conversationId = $conversationId;
     }
 
-    public function getDestinataireId() : int
+    public function getConversationId() : int
     {
-        return $this->destinataireId;
+        return $this->conversationId;
     }
 }
