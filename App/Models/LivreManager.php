@@ -83,13 +83,14 @@ class LivreManager extends AbstractEntityManager
 
     public function updateLivre(Livre $livre) : void
     {
+        echo $livre->getStatutBool();
         $sql = "UPDATE livre SET titre = :titre, auteur = :auteur, image = :image, description = :description, statut = :statut WHERE id = :id";
         $this->db->query($sql, [
             'titre' => $livre->getTitre(),
             'auteur' => $livre->getAuteur(),
             'image' => $livre->getImage(),
             'description' => $livre->getDescription(),
-            'statut' => $livre->getStatut(),
+            'statut' => $livre->getStatutBool(),
             'id' => $livre->getId()
         ]);
     }

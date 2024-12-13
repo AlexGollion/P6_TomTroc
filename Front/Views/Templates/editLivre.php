@@ -1,13 +1,20 @@
 <section class="editLivre">
     <h1>Modifier les informations</h1>
-    <form action="updateLivre" method="post">
+    <section class="editMain">
         <section class="imgLivre">
+            <div class="overlay hidden"></div>
+            <section class="modal hidden">
+                <img>
+                <input type="file" id="image" name="image">
+                <input type="button" id="btn" value="Choisisseez l'image du livre">
+                <button class="closeModal">Valider</button>
+            </section>
+    
             <label for="photo">Photo</label>
             <img src=<?= "./Front/images/livres/" . $livre->getImage() ?>>
-            <input type="file" id="image" name="image"/>
+            <button class="openModal">modifier la photo</button>
         </section>
-
-        <section class="infoLivre">
+        <form action="updateLivre" method="post">
             <input type="hidden" name="idLivre" id="idLivre" value="<?= $livre->getId() ?>"/>
             <label for="titre">Titre</label>
             <input type="text" id="titre" name="titre" value="<?= $livre->getTitre() ?>"/>
@@ -26,6 +33,6 @@
                 </option>
             </select>
             <input type="submit" value="Valider" class="submit"/>
-        </section>
-    </form>
+        </form>
+    </section>
 </section>

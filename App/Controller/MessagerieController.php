@@ -8,15 +8,22 @@ class MessagerieController extends AbstractController
 {
     public function messagerie() : void
     {
-        $this->view('Messagerie', 'messagerie');
+        $idSession = $_SESSION['idUser'];
+        
+        $messageManager = new Models\MessageManager();
+
+        $conversations = $messageManager->getAllConversation($idSession);
+        $conv = $conversations[0];
+
+        $this->view('Messagerie', 'messagerie', ["conversations" => $conversations, "selected" => $conv]);
     }
     
     public function newMessagerie() : void 
     {
-        $idSession = $_SESSION['idUser'];
         $idUserLivre = Services\Utils::request('idUserLivre');
 
         $messageManager = new Models\MessageManager();
+
         $idConv = $messageManager->checkIfConvExist($idSession, $idUserLivre);
         
         if ($idConv == -1)
@@ -29,10 +36,8 @@ class MessagerieController extends AbstractController
             $idConv = $messageManager->checkIfConvExist($idSession, $idUserLivre);
         }
 
-        $conversations = $messageManager->getAllConversation($idSession);
-        $conv = $messageManager->getConversationById($idConv);
-
-        $this->view('Messagerie', 'messagerie', ["conversations" => $conversations, "selected" => $conv]);
+        header("Location: messagerie");
+        exit();
     }
 
     public function sendMessage() : void

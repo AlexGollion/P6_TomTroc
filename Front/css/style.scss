@@ -193,6 +193,18 @@ button {
     background-color: #FAF9F7;
     align-items: center;
     padding: 5%;
+
+    .search {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 100%;
+
+        input {
+            border: none;
+            height: 50px;
+        }
+    }
     
     .grilleLivre {
         display: grid;
@@ -366,6 +378,46 @@ button {
             border-radius: 20px;
         }
 
+        .compte {
+
+            .modal {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                gap: 0.4rem;
+                width: 450px;
+                padding: 1.3rem;
+                min-height: 250px;
+                position: absolute;
+                top: 20%;
+                background-color: white;
+                border: 1px solid #ddd;
+                border-radius: 15px;
+                z-index: 2;
+
+                #photo {
+                    display: none;
+                }
+              }
+
+              .overlay {
+                position: fixed;
+                top: 0;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.5);
+                backdrop-filter: blur(3px);
+                z-index: 1;
+              }
+
+              .hidden {
+                display: none;
+              }
+        }
+
         .infoPerso {
             margin-left: 4%;
 
@@ -409,6 +461,10 @@ button {
                     margin-bottom: 10px;
                     padding: 5px;
                     font-weight: bold;
+                }
+
+                #photo {
+                    display: none;
                 }
             }
         }
@@ -529,7 +585,7 @@ button {
     flex-direction: column;
     background-color: #FAF9F7;
 
-    form {
+    .editMain {
         display: flex;
         flex-direction: row;
         background-color: white;
@@ -545,7 +601,7 @@ button {
             width: 80%;
         }
 
-        .imgLivre, .infoLivre {
+        .imgLivre, form {
             width: 48%;
             display: flex;
             flex-direction: column;
@@ -560,9 +616,50 @@ button {
                 margin-top: 25px;
                 margin-bottom: 10px;
             }
+
+            .modal {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                gap: 0.4rem;
+                width: 450px;
+                padding: 1.3rem;
+                min-height: 250px;
+                position: absolute;
+                top: 20%;
+                background-color: white;
+                border: 1px solid #ddd;
+                border-radius: 15px;
+                z-index: 2;
+
+                #photo {
+                    display: none;
+                }
+              }
+
+              .overlay {
+                position: fixed;
+                top: 0;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.5);
+                backdrop-filter: blur(3px);
+                z-index: 1;
+              }
+
+              .hidden {
+                display: none;
+              }
+
+              #image {
+                display: none;
+              }
         }
 
-        .infoLivre {
+        form {
             display: flex;
             flex-direction: column;
             margin-left: 15%;

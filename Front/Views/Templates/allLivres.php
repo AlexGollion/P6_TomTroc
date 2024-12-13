@@ -1,5 +1,8 @@
 <section class="livres">
-    <h1>Nos livres à l'échange</h1>
+    <div class="search">
+        <h1>Nos livres à l'échange</h1>
+        <input type="search" placeholder="Rechercher un livre"/>
+    </div>
     <section class="grilleLivre">
     <?php foreach($livres as $index => $livre) {  ?>
         <form action="detailLivre" method="post">

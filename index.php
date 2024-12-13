@@ -17,6 +17,7 @@ TomTroc\App\Router::addRoute('connexion', $userController);
 TomTroc\App\Router::addRoute('deconnexion', $userController);
 TomTroc\App\Router::addRoute('monCompte', $userController);
 TomTroc\App\Router::addRoute('comptePublic', $userController);
+TomTroc\App\Router::addRoute('changeInfo', $userController);
 
 TomTroc\App\Router::addRoute('showAddLivre', $livreController);
 TomTroc\App\Router::addRoute('addLivre', $livreController);

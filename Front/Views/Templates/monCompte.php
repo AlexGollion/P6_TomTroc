@@ -1,10 +1,10 @@
 <?php 
     $formData = array (
-        "action" => "changeinfo",
+        "action" => "changeInfo",
         "label" => ["Email", "Mot de passe", "Pseudo"],
         "input" => ["Email", "password", "pseudo"],
         "type" => ["email", "password", "text"],
-        "value" => [$user->getEmail(), $user->getPassword(), $user->getPseudo()],
+        "placeholder" => [$user->getEmail(), "••••••••", $user->getPseudo()],
         "submit" => "Enregistrer"
     );
     $paramsForm = array("component" => "form", "formData" => $formData);
@@ -22,11 +22,23 @@
 
     <section class="compteInfo">
         <div class="compte">
-            <h2><?= $user->getPseudo(); ?></h2>
-            <p>Membre depuis <?= $user->getDateCreation(); ?></p>
-            <span>Bibliothèque</span>
+            <div>
+                <button class="openModal">modifier</button>
+                <div class="overlay hidden"></div>
+                <section class="modal hidden">
+                    <img>
+                    <input type="file" id="photo" name="photo">
+                    <input type="button" id="btn" value="Choisisseez votre photo de profil">
+                    <button class="closeModal">Valider</button>
+                </section>
+            </div>
+            <div>
+                <h2><?= $user->getPseudo(); ?></h2>
+                <p>Membre depuis <?= $user->getDateCreation(); ?></p>
+                <span>Bibliothèque</span>
+            </div>
         </div>
-
+        
         <div class="infoPerso">
             <h2>Vos informations personnelles</h2>
             <?= TomTroc\Front\Components\Component::render($paramsForm) ?>

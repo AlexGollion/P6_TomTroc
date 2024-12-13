@@ -18,6 +18,6 @@
     <footer>
         
     </footer>
-
+    <script type="module" src="./Front/js/main.js"></script>
 </body>
 </html>

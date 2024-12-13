@@ -142,6 +142,15 @@ class LivreController extends AbstractController
         $description = Services\Utils::request('description');
         $statut = Services\Utils::request('statut');
 
+        if ($statut == "true")
+        {
+            $statutBool = true;
+        }
+        else 
+        {
+            $statutBool = false;
+        }
+
         $id = $_SESSION['idUser'];
         
         if (!isset($id))
@@ -155,8 +164,10 @@ class LivreController extends AbstractController
         $newLivre->setTitre($titre);
         $newLivre->setAuteur($auteur);
         $newLivre->setDescription($description);
-        $newLivre->setStatut($statut);
+        $newLivre->setStatut($statutBool);
         $newLivre->setUserId($id);
+
+        echo $newLivre->getStatut();
         
         $livreManager = new Models\LivreManager();
         $oldLivre = $livreManager->getLivreById($idLivre);
@@ -191,9 +202,7 @@ class LivreController extends AbstractController
             throw new \Exception("L'utilisateur demandé n'existe pas.");
         }
 
-        $livreManager = new Models\LivreManager();
-        $livres = $livreManager->getLivresByUserId($id);
-
-        $this->view('Mon compte', 'monCompte', ["user" => $user, "livres" => $livres]);
+        header("Location: monCompte");
+        exit();
     }
 }

@@ -126,6 +126,40 @@ class UserController extends AbstractController
 
         return ["livres" => $livres, "user" => $user];
     }
+
+    public function changeInfo() : void
+    {
+        $id = $_SESSION['idUser'];
+        $pseudo = Services\Utils::request('pseudo');
+        $password = Services\Utils::request('password');
+        if (isset($_FILES['photo']))
+        {
+            $photo = $_FILES['photo'];
+            $extension = pathinfo($photo["name"], PATHINFO_EXTENSION);
+            $nameImage = $pseudo . " " . time() . '.' . $extension;
+            $nameImage = str_replace(" ", "_", $nameImage);
+            if (!move_uploaded_file($photo['tmp_name'], "./Front/images/profils/" . $nameImage))
+            {
+                throw new \Exception("La photo de profil n'a pas été mis dans le dossier");
+            }
+        }
+        else 
+        {
+            $nameImage = null;
+        }
+        $email = Services\Utils::request('password');
+
+        if (!isset($id))
+        {
+            throw new \Exception("L'utilisateur n'a pas d'id");
+        }
+
+        $userManager = new Models\UserManager();
+        $userManager->updateUser($id, $pseudo, $password, $nameImage, $email);
+
+        header("Location: monCompte");
+        exit();
+    }
 }
 
 ?>
