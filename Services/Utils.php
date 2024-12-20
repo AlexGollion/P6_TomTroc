@@ -9,7 +9,7 @@ class Utils
         return $_REQUEST[$variableName] ?? $defaultValue;
     }
 
-    public static function changeColor(int $i) : string
+    public static function changeColorTableau(int $i) : string
     {
         $res;
         if ($i%2 == 0)
@@ -19,6 +19,20 @@ class Utils
         else
         {
             $res = "tableauColorB";
+        }
+        return $res;
+    }
+
+    public static function changeColorMessage(int $id) : string
+    {
+        $res;
+        if ($id == $_SESSION['idUser'])
+        {
+            $res = "messageEnvoyer";
+        }
+        else
+        {
+            $res = "messageRecu";
         }
         return $res;
     }
