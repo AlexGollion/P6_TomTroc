@@ -10,6 +10,7 @@ class Livre extends AbstractEntity
     private string $description;
     private bool $statut;
     private int $userId;
+    private ?\DateTime $dateCreation;
 
     public function setTitre(string $titre) : void
     {
@@ -81,5 +82,26 @@ class Livre extends AbstractEntity
     public function getUserId() : int
     {
         return $this->userId;
+    }
+
+    public function setDateCreationDateTime(\DateTime $dateCreation) : void
+    {
+        $this->dateCreation = $dateCreation;
+    }
+    
+    public function setDateCreation(string $dateCreation) : void
+    {
+        $dateTime = \DateTime::createFromFormat('Y-m-d H:i:s', $dateCreation);
+        $this->dateCreation = $dateTime;
+    }
+
+    public function getDateCreation() : string
+    {
+        return $this->dateCreation->format('Y-m-d H:i:s');
+    
+    }
+    public function getDateCreationDateTime() : \DateTime
+    {
+        return $this->dateCreation;
     }
 }

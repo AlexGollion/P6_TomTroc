@@ -15,9 +15,8 @@
         <?= $content /* Ici est affiché le contenu réel de la page. */ ?>
     </main>
     
-    <footer>
-        
-    </footer>
+    <?= TomTroc\Front\Components\Component::render(['component' => 'footer']); ?>
+
     <script type="module" src="./Front/js/main.js"></script>
 </body>
 </html>

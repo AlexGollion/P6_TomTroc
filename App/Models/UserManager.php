@@ -39,7 +39,7 @@ class UserManager extends AbstractEntityManager
         return null;
     }
 
-    public function updateUser(int $id, string $pseudo = null, string $password = null, string $image = null, string $email = null) : void
+    public function updateUser(int $id, ?string $pseudo = null, ?string $password = null, ?string $image = null, ?string $email = null) : void
     {
         $nbParams = $this->compteInfo([$pseudo, $password, $image, $email]);
         $sql = "UPDATE user SET ";

@@ -43,6 +43,8 @@ class LivreController extends AbstractController
         $livre->setDescription($description);
         $livre->setStatut($statut);
         $livre->setUserId($id);
+        $dateCreation = new \DateTime();
+        $livre->setDateCreationDateTime($dateCreation);
 
         $livreManager = new Models\LivreManager();
         $livreManager->addLivre($livre);
@@ -52,18 +54,8 @@ class LivreController extends AbstractController
             throw new \Exception("Le livre n'a pas été mis dans le dossier");
         }
 
-        $userManager = new Models\UserManager();
-        $user = $userManager->getUserById($id);
-
-        if (!$user)
-        {
-            throw new \Exception("L'utilisateur demandé n'existe pas.");
-        }
-
-        $livreManager = new Models\LivreManager();
-        $livres = $livreManager->getLivresByUserId($id);
-
-        $this->view('Mon compte', 'monCompte', ["user" => $user, "livres" => $livres]);
+        header("Location: monCompte");
+        exit();
     }
 
     public function deleteLivre() : void
@@ -205,4 +197,22 @@ class LivreController extends AbstractController
         header("Location: monCompte");
         exit();
     }
+
+    public function searchLivres() : void
+    {
+        $titleLivre = Services\Utils::request('searchBar');
+        
+        if ($titleLivre == null)
+        {
+            header("Location: showAllLivres");
+            exit();
+        }
+        else
+        {
+            $livreManager = new Models\LivreManager();
+            $livres = $livreManager->getLivresByName($titleLivre);
+            $this->view("Livre à l'échange", 'allLivres', ["livres" => $livres]);
+        }
+
+    } 
 }

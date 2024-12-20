@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:3306
--- Généré le : ven. 13 déc. 2024 à 09:28
+-- Généré le : ven. 20 déc. 2024 à 09:45
 -- Version du serveur : 8.0.30
 -- Version de PHP : 8.1.10
 
@@ -50,18 +50,21 @@ CREATE TABLE `livre` (
   `titre` varchar(150) NOT NULL,
   `auteur` varchar(100) NOT NULL,
   `image` varchar(250) NOT NULL,
-  `description` varchar(500) NOT NULL,
+  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `statut` tinyint(1) NOT NULL,
-  `user_id` int NOT NULL
+  `user_id` int NOT NULL,
+  `date_creation` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Déchargement des données de la table `livre`
 --
 
-INSERT INTO `livre` (`id`, `titre`, `auteur`, `image`, `description`, `statut`, `user_id`) VALUES
-(20, 'The Kinkfolk table', 'Nathan Williams', 'The_Kinkfolk_table_Nathan_Williams_1733145530.png', 'modification de la descritpion                    ', 1, 1),
-(21, 'test', 'test', 'test_test_1733146788.png', 'test', 1, 1);
+INSERT INTO `livre` (`id`, `titre`, `auteur`, `image`, `description`, `statut`, `user_id`, `date_creation`) VALUES
+(22, 'The Kinkfolk table', 'Nathan Williams', 'The_Kinkfolk_table_Nathan_Williams_1734686506.png', 'J\'ai récemment plongé dans les pages de \'The Kinfolk Table\' et j\'ai été enchanté par cette œuvre captivante. Ce livre va bien au-delà d\'une simple collection de recettes ; il célèbre l\'art de partager des moments authentiques autour de la table. \r\n\r\nLes photographies magnifiques et le ton chaleureux captivent dès le départ, transportant le lecteur dans un voyage à travers des recettes et des histoires qui mettent en avant la beauté de la simplicité et de la convivialité. \r\n\r\nChaque page est une invitation à ralentir, à savourer et à créer des souvenirs durables avec les êtres chers. \r\n\r\n\'The Kinfolk Table\' incarne parfaitement l\'esprit de la cuisine et de la camaraderie, et il est certain que ce livre trouvera une place spéciale dans le cœur de tout amoureux de la cuisine et des rencontres inspirantes.', 1, 1, '2024-12-20 09:21:46'),
+(23, 'Wabi Sabi', 'Beth Kempton', 'Wabi_Sabi_Beth_Kempton_1734686847.png', 'Wabi Sabi de Beth Kempton', 1, 1, '2024-12-20 09:27:27'),
+(24, 'Milk & honey', 'Rupi Kaur', 'Milk_&_honey_Rupi_Kaur_1734686976.png', 'Milk & honey de Rupi Kaur', 1, 2, '2024-12-20 09:29:36'),
+(25, 'Esther', 'Alabster', 'Esther_Alabster_1734687402.png', 'Esther de Alabster', 1, 2, '2024-12-20 09:36:42');
 
 -- --------------------------------------------------------
 
@@ -91,7 +94,10 @@ INSERT INTO `message` (`id`, `content`, `date_creation`, `conversation_id`, `id_
 (7, 'test', '2024-12-11 17:00:30', 4, 2),
 (8, 'test', '2024-12-11 17:01:49', 4, 2),
 (9, 'test', '2024-12-11 17:02:21', 4, 2),
-(10, 'test', '2024-12-11 17:03:54', 4, 2);
+(10, 'test', '2024-12-11 17:03:54', 4, 2),
+(11, 'new test', '2024-12-19 13:26:10', 4, 1),
+(12, 'new test', '2024-12-19 13:27:40', 4, 1),
+(13, 'new test', '2024-12-19 13:28:13', 4, 1);
 
 -- --------------------------------------------------------
 
@@ -132,7 +138,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `pseudo`, `email`, `password`, `photo`, `date_creation`) VALUES
-(1, 'test', 'test@gmail.com', '$2y$10$ChmaRn22DUZSBvCP1cguNOofETIWbEG1wwvYEneZ8zAng.LKxI0NS', 'test2_1734032153.', '2024-11-26 10:44:01'),
+(1, 'test', 'test@gmail.com', '$2y$10$ChmaRn22DUZSBvCP1cguNOofETIWbEG1wwvYEneZ8zAng.LKxI0NS', 'test_1734513684.png', '2024-11-26 10:44:01'),
 (2, 'admin', 'admin@gmail.com', '$2y$10$BHjhH3rsbiFblxzDprYi8ea30HaSHhq.fT5bvA5yRpqmfTz8.v82m', NULL, '2024-12-05 09:30:36');
 
 --
@@ -188,13 +194,13 @@ ALTER TABLE `conversation`
 -- AUTO_INCREMENT pour la table `livre`
 --
 ALTER TABLE `livre`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT pour la table `message`
 --
 ALTER TABLE `message`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT pour la table `user`

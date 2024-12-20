@@ -21,6 +21,13 @@ class MessagerieController extends AbstractController
     public function newMessagerie() : void 
     {
         $idUserLivre = Services\Utils::request('idUserLivre');
+        $idSession = $_SESSION['idUser'];
+
+        if (!isset($idSession))
+        {
+            header("Location: showConnexion");
+            exit();
+        }
 
         $messageManager = new Models\MessageManager();
 
@@ -57,9 +64,7 @@ class MessagerieController extends AbstractController
         $messageManager = new Models\MessageManager();
         $messageManager->sendMessage($message);
 
-        $conversations = $messageManager->getAllConversation($userId);
-        $conv = $messageManager->getConversationById($idConv);
-
-        $this->view('Messagerie', 'messagerie', ["conversations" => $conversations, "selected" => $conv]);
+        header("Location: messagerie");
+        exit();
     }
 }

@@ -79,6 +79,7 @@ class UserController extends AbstractController
     public function deconnexion() : void
     {
         unset($_SESSION['user']);
+        unset($_SESSION['idUser']);
 
         $this->view('Accueil', 'home');
     }
@@ -132,12 +133,23 @@ class UserController extends AbstractController
         $id = $_SESSION['idUser'];
         $pseudo = Services\Utils::request('pseudo');
         $password = Services\Utils::request('password');
+        
+        $userManager = new Models\UserManager();
+        $oldDataUser = $userManager->getUserById($id);
         if (isset($_FILES['photo']))
         {
             $photo = $_FILES['photo'];
             $extension = pathinfo($photo["name"], PATHINFO_EXTENSION);
-            $nameImage = $pseudo . " " . time() . '.' . $extension;
+            if ($pseudo != null)
+            {
+                $nameImage = $pseudo . " " . time() . '.' . $extension;
+            }
+            else
+            {
+                $nameImage = $oldDataUser->getPseudo() . " " . time() . '.' . $extension;
+            }
             $nameImage = str_replace(" ", "_", $nameImage);
+            unlink("./Front/images/profils/" . $oldDataUser->getPhoto());
             if (!move_uploaded_file($photo['tmp_name'], "./Front/images/profils/" . $nameImage))
             {
                 throw new \Exception("La photo de profil n'a pas été mis dans le dossier");
@@ -154,7 +166,6 @@ class UserController extends AbstractController
             throw new \Exception("L'utilisateur n'a pas d'id");
         }
 
-        $userManager = new Models\UserManager();
         $userManager->updateUser($id, $pseudo, $password, $nameImage, $email);
 
         header("Location: monCompte");

@@ -12,16 +12,19 @@
         <?php } ?>
     </section>
 
-    <section class="listeMessage">
-        <?php foreach($selected->getMessages() as $message) { ?>
-            <div>
-                <h3><?= $message->getContent(); ?></h3>
-            </div>
-        <?php } ?>
+    <section class="sectionMessage">
+        <section class="listeMessage">
+            <?php foreach($selected->getMessages() as $message) { ?>
+                <div class="<?= TomTroc\Services\Utils::changeColorMessage($message->getExpediteurId()) ?>">
+                    <span><?= $message->getDateCreation() ?></span>
+                    <p><?= $message->getContent() ?></p>
+                </div>
+            <?php } ?>
+        </section>
         <form action="sendMessage" method="post">
             <input type="hidden" id="idConversation" name="idConversation" value="<?= $selected->getId() ?>" />
-            <input type="text" id="content" name="content" class="message"/>
-            <input type="submit" value="envoyer" class="submit"/>
+            <input type="text" id="content" name="content" class="message" placeholder="Taper votre message ici"/>
+            <input type="submit" value="Envoyer" class="submit"/>
         </form>
     </section>
 </section>

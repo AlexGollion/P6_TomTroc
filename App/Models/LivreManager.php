@@ -6,20 +6,22 @@ class LivreManager extends AbstractEntityManager
 {
     public function addLivre(Livre $newLivre) : void
     {
-        $sql = "INSERT INTO livre (titre, auteur, image, description, statut, user_id) VALUES (:titre, :auteur, :image, :description, :statut, :user_id)";
+        $sql = "INSERT INTO livre (titre, auteur, image, description, statut, user_id, date_creation)
+            VALUES (:titre, :auteur, :image, :description, :statut, :user_id, :date_creation)";
         $this->db->query($sql, [
             'titre' => $newLivre->getTitre(),
             'auteur' => $newLivre->getAuteur(),
             'image' => $newLivre->getImage(),
             'description' => $newLivre->getDescription(),
-            'statut' => $newLivre->getStatut(),
-            'user_id' => $newLivre->getUserId()
+            'statut' => $newLivre->getStatutBool(),
+            'user_id' => $newLivre->getUserId(),
+            'date_creation' => $newLivre->getDateCreation()
         ]);
     }
 
     public function getAllLivres() : array
     {
-        $sql = "SELECT L.auteur, L.titre, L.id, L.image, U.pseudo FROM livre L INNER JOIN user U ON L.user_id = U.id;";
+        $sql = "SELECT L.auteur, L.titre, L.id, L.image, U.pseudo FROM livre L INNER JOIN user U ON L.user_id = U.id";
         $result = $this->db->query($sql);
         $livres = [];
         while ($data = $result->fetch())
@@ -93,5 +95,36 @@ class LivreManager extends AbstractEntityManager
             'statut' => $livre->getStatutBool(),
             'id' => $livre->getId()
         ]);
+    }
+
+    public function getLivresByName(string $title) : array
+    {
+        $sql = "SELECT L.auteur, L.titre, L.id, L.image, U.pseudo FROM livre L INNER JOIN user U ON L.user_id = U.id
+            WHERE L.titre = :titre";
+        $res = $this->db->query($sql, [
+            'titre' => $title
+        ]);
+
+        $livres = [];
+        while ($data = $res->fetch())
+        {
+            $livre = new Livre($data);
+            array_push($livres, ["livre" => $livre, "user" => $data["pseudo"]]);
+        }
+        return $livres;
+    }
+
+    public function getLivreHome() : array 
+    {
+        $sql = "SELECT L.auteur, L.titre, L.id, L.image, U.pseudo FROM livre L INNER JOIN user U ON L.user_id = U.id
+            ORDER BY L.date_creation";
+        $result = $this->db->query($sql);
+        $livres = [];
+        while ($data = $result->fetch())
+        {
+            $livre = new Livre($data);
+            array_push($livres, ["livre" => $livre, "user" => $data["pseudo"]]);
+        }
+        return $livres;    
     }
 }

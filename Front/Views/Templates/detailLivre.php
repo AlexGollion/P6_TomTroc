@@ -21,13 +21,12 @@
         <h2>description</h2>
         <p id="description"><?= $livre->getDescription() ?></p>
         <h2>Propiétaire</h2>
-        <form action="comptePublic" method="post" class="proprietaire">
-            <input type="hidden" name="userId" value="<?= $user->getId() ?>"/>
-            <button>
+        <a href="comptePublic&userId=<?= $user->getId() ?>" class="proprietaire">
+            <?php if ($user->getPhoto() != null) { ?>
                 <img src=<?= "./Front/images/livres/" . $user->getPhoto() ?>>
-                <span><?= $user->getPseudo() ?></span>
-            </button>
-        </form>
+            <?php } ?>
+            <span><?= $user->getPseudo() ?></span>
+        </a>
         <?= TomTroc\Front\Components\Component::render($messageBtn) ?>
     </section>
 </section>

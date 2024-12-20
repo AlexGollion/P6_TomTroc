@@ -23,12 +23,13 @@
     <section class="compteInfo">
         <div class="compte">
             <div>
+                <img class="photoProfil" src="./Front/images/profils/<?= $user->getPhoto() ?>" alt="" >
                 <button class="openModal">modifier</button>
                 <div class="overlay hidden"></div>
                 <section class="modal hidden">
-                    <img>
-                    <input type="file" id="photo" name="photo">
-                    <input type="button" id="btn" value="Choisisseez votre photo de profil">
+                    <img id="preview" src="" alt="">
+                    <input type="file" id="image" name="image">
+                    <input type="button" id="btnChoix" value="Choisissez votre photo de profil">
                     <button class="closeModal">Valider</button>
                 </section>
             </div>
@@ -39,7 +40,7 @@
             </div>
         </div>
         
-        <div class="infoPerso">
+        <div class="infoPerso" id="containerForm">
             <h2>Vos informations personnelles</h2>
             <?= TomTroc\Front\Components\Component::render($paramsForm) ?>
         </div>
@@ -69,7 +70,7 @@
                             ["name" => "idLivre", "value" => $livre->getId()],
                             ["name" => "image", "value" => $livre->getImage()]
                         ],
-                    "class" => "supprimerBtn " . TomTroc\Services\Utils::changeColor($index) 
+                    "class" => "supprimerBtn " . TomTroc\Services\Utils::changeColorTableau($index) 
                     ]
                 );
                 $editBtn = array (
@@ -80,12 +81,12 @@
                     "hidden" => [
                             ["name" => "idLivre", "value" => $livre->getId()]
                         ],
-                    "class" => "editBtn " . TomTroc\Services\Utils::changeColor($index)
+                    "class" => "editBtn " . TomTroc\Services\Utils::changeColorTableau($index)
                     ]
                 );
 
         ?>
-            <tr class="<?= TomTroc\Services\Utils::changeColor($index) ?>">
+            <tr class="<?= TomTroc\Services\Utils::changeColorTableau($index) ?>">
                 <td class="first"><img src=<?= "./Front/images/livres/" . $livre->getImage() ?>></td>
                 <td><?= $livre->getTitre() ?></td>
                 <td><?= $livre->getAuteur() ?></td>

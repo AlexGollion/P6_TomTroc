@@ -1,10 +1,18 @@
 import modal from './modal.js';
 
-const modalSection = document.querySelector(".modal");
-const overlay = document.querySelector(".overlay");
-const openModalBtn = document.querySelector(".openModal");
-const closeModalBtn = document.querySelector(".closeModal");
-const image = document.getElementById('photo');
-const btn = document.getElementById('btn');
+const elements = {
+    container: document.querySelector(".modal"),
+    overlay: document.querySelector(".overlay"),
+    openModalBtn: document.querySelector(".openModal"),
+    closeModalBtn: document.querySelector(".closeModal"),
+    image: document.getElementById('image'),
+    btnChoixImg: document.getElementById('btnChoix'),
+    preview: document.getElementById('preview')
+}
 
-modal(modalSection, overlay, openModalBtn, closeModalBtn, image, btn);
+console.log(elements);
+
+if (elements.container)
+{
+    modal(elements);
+}

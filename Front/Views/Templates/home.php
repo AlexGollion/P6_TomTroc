@@ -46,4 +46,24 @@
 
 <section class="valeur">
     <h2>Nos valeurs</h2>
+    <p>Chez Tom Troc, nous mettons l'accent sur le<br>
+    partage, la découverte et la communauté. Nos<br>
+    valeurs sont ancrées dans notre passion pour les<br>
+    livres et notre désir de créer des liens entre les<br>
+    lecteurs. Nous croyons en la puissance des histoires<br>
+    pour rassembler les gens et inspirer des<br>
+    conversations enrichissantes.<br>
+    <br>
+    Notre association a été fondée avec une conviction<br>
+    profonde : chaque livre mérite d'être lu et partagé.<br>
+    <br>
+    Nous sommes passionnés par la création d'une<br>
+    plateforme conviviale qui permet aux lecteurs de se<br>
+    connecter, de partager leurs découvertes littéraires<br>
+    et d'échanger des livres qui attendent patiemment<br>
+    sur les étagères.</p>
+    <div>
+        <span>L'équipe Tom Troc</span>
+        <img src="./Front/images/static/Vector.png">
+    <div>
 </section>
