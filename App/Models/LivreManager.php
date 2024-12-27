@@ -85,7 +85,6 @@ class LivreManager extends AbstractEntityManager
 
     public function updateLivre(Livre $livre) : void
     {
-        echo $livre->getStatutBool();
         $sql = "UPDATE livre SET titre = :titre, auteur = :auteur, image = :image, description = :description, statut = :statut WHERE id = :id";
         $this->db->query($sql, [
             'titre' => $livre->getTitre(),
@@ -117,7 +116,7 @@ class LivreManager extends AbstractEntityManager
     public function getLivreHome() : array 
     {
         $sql = "SELECT L.auteur, L.titre, L.id, L.image, U.pseudo FROM livre L INNER JOIN user U ON L.user_id = U.id
-            ORDER BY L.date_creation";
+            ORDER BY L.date_creation DESC LIMIT 4";
         $result = $this->db->query($sql);
         $livres = [];
         while ($data = $result->fetch())

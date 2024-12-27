@@ -1,23 +1,3 @@
-<?php 
-        $decouvrirBtn = array("component" => "button", "buttonData" => [
-            "action" => "home",
-            "value" => "Découvrir",
-            "class" => "greenBtn"
-        ]);
-
-        $voirLivresGreenBtn = array("component" => "button", "buttonData" => [
-            "action" => "showAllLivres",
-            "value" => "Voir tous les livres",
-            "class" => "greenBtn"
-        ]);
-
-        $voirLivresWhiteBtn = array("component" => "button", "buttonData" => [
-            "action" => "showAllLivres",
-            "value" => "Voir tous les livres",
-            "class" => "whiteBtn"
-        ]);
-?>
-
 <section class="join">
     <div>
         <h1>Rejoignez nos <br> lecteurs passionnées</h1>
@@ -27,19 +7,29 @@
             partage de connaissances et d'histoires à <br>
             travers les livres
         </p>
-        <?= TomTroc\Front\Components\Component::render($decouvrirBtn) ?>
+        <a href="home" class="greenLink">Découvrir</a>
     </div>
     <img src="./Front/images/static/hamza-nouasria-accueil.png">
 </section>
 
 <section class="dernierAjout">
     <h2>Les derniers livres ajoutés</h2>
-    <?= TomTroc\Front\Components\Component::render($voirLivresGreenBtn) ?>
+    <div class="livreHome">
+    <?php foreach($livres as $index => $livre) {  ?>
+        <a href="detailLivre&idLivre=<?= $livre["livre"]->getId() ?>">
+            <img src=<?= "./Front/images/livres/" . $livre["livre"]->getImage() ?>>
+            <h2><?= $livre["livre"]->getTitre() ?></h2>
+            <h3><?= $livre["livre"]->getAuteur() ?></h3>
+            <p>Vendu par : <?= $livre["user"] ?></p>
+        </a>
+    <?php } ?>
+    </div>
+    <a href="showAllLivres" class="greenLink">Voir tous les livres</a>
 </section>
 
 <section class="marche">
     <h2>Comment ça marche ?</h2>
-    <?= TomTroc\Front\Components\Component::render($voirLivresWhiteBtn) ?>
+    <a href="showAllLivres" class="whiteLink">Voir tous les livres</a>
 </section>
 
 <img src="./Front/images/static/clay-banks-accueil.png">

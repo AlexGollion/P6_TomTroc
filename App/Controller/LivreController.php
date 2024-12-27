@@ -9,7 +9,9 @@ class LivreController extends AbstractController
 
     public function home() : void
     {
-        $this->view('Acceuil', 'home');
+        $livreManager = new Models\LivreManager();
+        $livres = $livreManager->getLivreHome();
+        $this->view('Acceuil', 'home', ["livres" => $livres]);
     }
 
     public function showAddLivre() : void
@@ -23,7 +25,7 @@ class LivreController extends AbstractController
         $auteur = Services\Utils::request('auteur'); 
         $image = $_FILES['image'];
         $description = Services\Utils::request('description');
-        $statut = Services\Utils::request('statut');
+        $statut = (int)Services\Utils::request('statut');
 
         $id = $_SESSION['idUser'];
         
@@ -132,16 +134,7 @@ class LivreController extends AbstractController
         $titre = Services\Utils::request('titre');
         $auteur = Services\Utils::request('auteur'); 
         $description = Services\Utils::request('description');
-        $statut = Services\Utils::request('statut');
-
-        if ($statut == "true")
-        {
-            $statutBool = true;
-        }
-        else 
-        {
-            $statutBool = false;
-        }
+        $statut = (int)Services\Utils::request('statut');
 
         $id = $_SESSION['idUser'];
         
@@ -156,10 +149,8 @@ class LivreController extends AbstractController
         $newLivre->setTitre($titre);
         $newLivre->setAuteur($auteur);
         $newLivre->setDescription($description);
-        $newLivre->setStatut($statutBool);
+        $newLivre->setStatut($statut);
         $newLivre->setUserId($id);
-
-        echo $newLivre->getStatut();
         
         $livreManager = new Models\LivreManager();
         $oldLivre = $livreManager->getLivreById($idLivre);

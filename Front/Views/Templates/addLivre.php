@@ -24,10 +24,10 @@
                 <textarea id="description" name="description"></textarea>
                 <label for="statut">Disponibilité</label>
                 <select name="statut" id="statut">
-                    <option value="true">
+                    <option value="1">
                         Disponible
                     </option>
-                    <option value="false">
+                    <option value="0">
                         Indisponible
                     </option>
                 </select>

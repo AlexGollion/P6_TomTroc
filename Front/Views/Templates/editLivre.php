@@ -26,10 +26,10 @@
                 </textarea>
                 <label for="statut">Disponibilité</label>
                 <select name="statut" id="statut">
-                    <option value="true" <?php if ($livre->getStatut()) { ?> selected <?php } ?>>
+                    <option value="1" <?php if ($livre->getStatut()) { ?> selected <?php } ?>>
                         Disponible
                     </option>
-                    <option value="false" <?php if (!$livre->getStatut()) { ?> selected <?php } ?>>
+                    <option value="0" <?php if (!$livre->getStatut()) { ?> selected <?php } ?>>
                         Indisponible
                     </option>
                 </select>
