@@ -1,7 +1,7 @@
 <?php 
     $formData = array (
         "action" => "changeInfo",
-        "label" => ["Email", "Mot de passe", "Pseudo"],
+        "label" => ["Adresse email", "Mot de passe", "Pseudo"],
         "input" => ["Email", "password", "pseudo"],
         "type" => ["email", "password", "text"],
         "placeholder" => [$user->getEmail(), "••••••••", $user->getPseudo()],
@@ -15,7 +15,7 @@
 
     <section class="compteInfo">
         <div class="compte">
-            <div>
+            <div class="compteImg">
                 <img class="photoProfil" src="./Front/images/profils/<?= $user->getPhoto() ?>" alt="" >
                 <button class="openModal">modifier</button>
                 <div class="overlay hidden"></div>
@@ -26,10 +26,11 @@
                     <button class="closeModal">Valider</button>
                 </section>
             </div>
-            <div>
+            <div class="compteLivre">
                 <h2><?= $user->getPseudo(); ?></h2>
-                <p>Membre depuis <?= $user->getDateCreation(); ?></p>
-                <span>Bibliothèque</span>
+                <p id="date">Membre depuis <?= date_diff($user->getDateCreationDateTime(), date_create(date('Y-m-d H:i:s')))->format('%Y ans et %m mois'); ?></p>
+                <p id="bibliotheque">Bibliothèque</p>
+                <p> <i class="fa-solid fa-pause"></i> <?= count($livres) ?> livres<p>
             </div>
         </div>
         
@@ -58,12 +59,12 @@
                 <td class="first"><img src=<?= "./Front/images/livres/" . $livre->getImage() ?>></td>
                 <td><?= $livre->getTitre() ?></td>
                 <td><?= $livre->getAuteur() ?></td>
-                <td><?= $livre->getDescription() ?></td>
+                <td><div><?= $livre->getDescription() ?></div></td>
                 <td class="<?= $livre->getStatut() ?>"><p><?= $livre->getStatut() ?></p></td>
                 <td>
-                    <a href="editLivre&idLivre=<?= $livre->getId() ?>" class="editLink <?= TomTroc\Services\Utils::changeColorTableau($index)?>">éditer</a>
+                    <a href="editLivre&idLivre=<?= $livre->getId() ?>" class="editLink <?= TomTroc\Services\Utils::changeColorTableau($index)?>">Éditer</a>
                     <a href="deleteLivre&idLivre=<?= $livre->getId() ?>&image=<?= $livre->getImage() ?>" 
-                    class="supprimerLink <?= TomTroc\Services\Utils::changeColorTableau($index)?>">supprimer</a>
+                    class="supprimerLink <?= TomTroc\Services\Utils::changeColorTableau($index)?>">Supprimer</a>
                 </td>
             </tr>
         <?php } ?>

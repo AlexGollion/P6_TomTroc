@@ -15,11 +15,11 @@
     }
     else
     {
-        $title = "connexion";
+        $title = "Connexion";
         $formData = array (
             "action" => "connexion",
-            "label" => ["Pseudo", "Mot de passe"],
-            "input" => ["pseudo", "password"],
+            "label" => ["Adresse email", "Mot de passe"],
+            "input" => ["email", "password"],
             "type" => ["text", "password"],
             "submit" => "Se connecter"
         );

@@ -1,4 +1,5 @@
 <section class="editLivre">
+    <a href="monCompte"><i class="fa-solid fa-arrow-left"></i> retour</a>
     <h1>Modifier les informations</h1>
     <section class="editMain">
         <section class="previewImageLivre">

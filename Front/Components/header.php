@@ -3,8 +3,8 @@
     if (isset($_SESSION['user']))
     {
         $navConnected = array(
-            ['title' => 'Messagerie', 'action' => 'messagerie'], 
-            ['title' => 'Mon Compte', 'action' => 'monCompte'], 
+            ['title' => '<i class="fa-regular fa-comment"></i> Messagerie', 'action' => 'messagerie'], 
+            ['title' => '<i class="fa-regular fa-user"></i> Mon Compte', 'action' => 'monCompte'], 
             ['title' => 'Déconnexion', 'action' => 'deconnexion']
         );
     }

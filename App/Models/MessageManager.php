@@ -1,15 +1,16 @@
 <?php
 
 namespace TomTroc\App\Models;
+use TomTroc\Services as Services;
 
 class MessageManager extends AbstractEntityManager
 {
-    public function getAllConversation(int $id): array
+    public function getAllConversation(int $userId, ?int $idSelectedConv): array
     {
         $sqlPivot = "SELECT * FROM conversation C 
             INNER JOIN pivot_conversation P ON C.id = P.id_conversation 
             WHERE P.id_user = :id";
-        $res = $this->db->query($sqlPivot, ['id' => $id]);
+        $res = $this->db->query($sqlPivot, ['id' => $userId]);
 
         $return = [];
 
@@ -19,24 +20,25 @@ class MessageManager extends AbstractEntityManager
             $conversation->setId($data['id']);
             $conversation->setNom($data['nom']);
 
-            $sqlMsg = "SELECT * FROM conversation C 
-                INNER JOIN Message M ON C.id = M.conversation_id
-                WHERE M.conversation_id = :id";
-            $messageData = $this->db->query($sqlMsg, ['id' => $data['id']]);
-            while ($message = $messageData->fetch())
+            if ($conversation->getId() == $idSelectedConv)
             {
-                $temp = $this->createMessage($message);
-                if (!empty($temp))
+                $conversation = $this->getAllMessages($conversation);
+            }
+            else
+            {
+                $lastMessageConv = $this->lastMessage($conversation->getId());
+                if(isset($lastMessageConv))
                 {
-                    $conversation->addMessage($temp);
+                    $conversation->addMessage($lastMessageConv);
                 }
             }
+
             
             $sqlUser = "SELECT id_user FROM pivot_conversation WHERE id_conversation = :id";
-            $userId = $this->db->query($sqlMsg, ['id' => $data['id']]);
-            while ($user = $userId->fetch())
+            $userId = $this->db->query($sqlUser, ['id' => $data['id']]);
+            while ($id = $userId->fetch())
             {
-                $temp = $this->getUser($user);
+                $temp = $this->getUser($id);
                 if (!empty($temp))
                 {
                     $conversation->addUser($temp);
@@ -47,6 +49,36 @@ class MessageManager extends AbstractEntityManager
         }
 
         return $return;
+    }
+
+    private function lastMessage(int $idConv) : ?Message
+    {
+        $sql = "SELECT * FROM Message M INNER JOIN Conversation C ON C.id = M.conversation_id WHERE M.conversation_id = :id
+            ORDER BY M.date_creation DESC LIMIT 1";
+        $res = $this->db->query($sql, ["id" => $idConv]);
+        $dataMessage = $res->fetch();
+        if(empty($dataMessage))
+        {
+            return null;
+        }
+        else
+        {
+            $message = $this->createMessage($dataMessage);
+            return $message;
+        }
+    }
+
+    private function getAllMessages(Conversation $conv) : Conversation
+    {
+        $sql = "SELECT * FROM Message M INNER JOIN Conversation C ON C.id = M.conversation_id WHERE M.conversation_id = :id
+            ORDER BY M.date_creation DESC ";
+        $res = $this->db->query($sql, ["id" => $conv->getId()]);
+        while ($dataMessage =  $res->fetch())
+        {
+            $message = $this->createMessage($dataMessage);
+            $conv->addMessage($message);
+        }
+        return $conv;
     }
 
     private function createMessage(array $data) : Message
@@ -63,7 +95,7 @@ class MessageManager extends AbstractEntityManager
     private function getUser(array $data) : ?User
     {
         $userManager = new UserManager();
-        $user = $userManager->getUserById($data['id']);
+        $user = $userManager->getUserById($data['id_user']);
         return $user;
     }
 
@@ -132,35 +164,43 @@ class MessageManager extends AbstractEntityManager
         ]);
     }
 
-    public function getConversationById(int $idConv) : Conversation
+    public function getLastConversationId(int $userId) : int
     {
-        $conversation = new Conversation();
-        $conversation->setId($idConv);
+        $sqlPivot = "SELECT * FROM conversation C 
+            INNER JOIN pivot_conversation P ON C.id = P.id_conversation 
+            WHERE P.id_user = :id";
+        $res = $this->db->query($sqlPivot, ['id' => $userId]);
 
-        $sqlMsg = "SELECT * FROM conversation C 
-            INNER JOIN Message M ON C.id = M.conversation_id
-            WHERE M.conversation_id = :id";
-        $messageData = $this->db->query($sqlMsg, ['id' => $idConv]);
-        while ($message = $messageData->fetch())
+        $return = [];
+
+        while ($data = $res->fetch())
         {
-            $temp = $this->createMessage($message);
-            if (!empty($temp))
+            $conversation = new Conversation();
+            $conversation->setId($data['id']);
+            $lastMessageConv = $this->lastMessage($conversation->getId());
+            if(isset($lastMessageConv))
             {
-                $conversation->addMessage($temp);
+                $dateMessage = \DateTime::createFromFormat('Y-m-d H:i:s', $lastMessageConv->getDateCreation());
             }
-        }
-            
-        $sqlUser = "SELECT id_user FROM pivot_conversation WHERE id_conversation = :id";
-        $userId = $this->db->query($sqlMsg, ['id' => $idConv]);
-        while ($user = $userId->fetch())
-        {
-            $temp = $this->getUser($user);
-            if (!empty($temp))
+            else
             {
-                $conversation->addUser($temp);
+                $dateMessage = null;
             }
+
+            array_push($return, ["idConv" => $conversation->getId(), "dateMessage" => $dateMessage]);
         }
 
-        return $conversation;
+        usort($return, function($a, $b) {
+            return $a["dateMessage"]<=>$b["dateMessage"];
+        });
+
+        if(empty($return))
+        {
+            return -1;
+        }
+        else
+        {
+            return $return[0]["idConv"];
+        }
     }
 }

@@ -29,6 +29,18 @@ class Conversation extends AbstractEntity
         return $this->messages;
     }
 
+    public function getLastMessage() : ?Message
+    {
+        if(empty($this->messages))
+        {
+            return null;
+        }
+        else
+        {
+            return $this->messages[0];
+        }
+    }
+
     public function setNom(string $nom) : void
     {
         $this->nom = $nom;
@@ -38,9 +50,4 @@ class Conversation extends AbstractEntity
     {
         return $this->nom;
     }
-    
-    /*public function getLastMessage() : Message
-    {
-        
-    }*/
 }

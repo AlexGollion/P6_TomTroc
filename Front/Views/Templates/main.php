@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TomTroc</title>
     <link rel="stylesheet" href="./Front/css/style.scss">
+    <script src="https://kit.fontawesome.com/177a696033.js" crossorigin="anonymous"></script>
 </head>
 
 <body>

@@ -72,4 +72,9 @@ class User extends AbstractEntity
     {
         return $this->dateCreation->format('Y-m-d H:i:s');
     }
+
+    public function getDateCreationDateTime() : \DateTime
+    {
+        return $this->dateCreation;
+    }
 }

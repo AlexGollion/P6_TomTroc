@@ -15,10 +15,10 @@ class UserManager extends AbstractEntityManager
         ]);
     }
 
-    public function getUserByLogin(string $pseudo) : ?User
+    public function getUserByEmail(string $email) : ?User
     {
-        $sql = "SELECT * FROM user WHERE pseudo = :pseudo";
-        $result = $this->db->query($sql, ['pseudo' => $pseudo]);
+        $sql = "SELECT * FROM user WHERE email = :email";
+        $result = $this->db->query($sql, ['email' => $email]);
         $user = $result->fetch();
         if ($user)
         {

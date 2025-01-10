@@ -46,4 +46,17 @@ class Utils
         header("Location: $url");
         exit();
     }
+
+    public static function dump($var)
+    {
+        echo '<pre style="margin: 20px;background:#EEE;border:1px solid #DDD">';
+        var_dump($var);
+        echo '</pre>';
+    }
+
+    public static function dd($var)
+    {
+        self::dump($var);
+        die();
+    }
 }

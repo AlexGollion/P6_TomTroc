@@ -2,7 +2,7 @@
     <div class="search">
         <h1>Nos livres à l'échange</h1>
         <form action="searchLivres" method="post">
-            <input type="search" placeholder="Rechercher un livre" id="searchBar" name="searchBar"/>
+            <input type="search" placeholder="&#xF002; Rechercher un livre" id="searchBar" name="searchBar"/>
         </form>
     </div>
     <section class="grilleLivre">

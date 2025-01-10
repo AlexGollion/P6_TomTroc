@@ -9,25 +9,37 @@ class MessagerieController extends AbstractController
     public function messagerie() : void
     {
         $idSession = $_SESSION['idUser'];
+        $idConv = Services\Utils::request('idConv');
         
         $messageManager = new Models\MessageManager();
 
-        $conversations = $messageManager->getAllConversation($idSession);
-        $conv = $conversations[0];
+        if(isset($idConv))
+        {
+            $conversations = $messageManager->getAllConversation($idSession, $idConv);
+            $this->view('Messagerie', 'messagerie', ["conversations" => $conversations, "selected" => $idConv]);
+        }
+        else
+        {
+            $idLastConv = $messageManager->getLastConversationId($idSession);
+            
+            if($idLastConv == -1)
+            {
+                $this->view('Messagerie', 'messagerie', ["conversations" => [], "selected" => $idLastConv]);
+            }
+            else 
+            {
+                $conversations = $messageManager->getAllConversation($idSession, $idLastConv);
+                $this->view('Messagerie', 'messagerie', ["conversations" => $conversations, "selected" => $idLastConv]);
+            }
+        }
 
-        $this->view('Messagerie', 'messagerie', ["conversations" => $conversations, "selected" => $conv]);
+
     }
     
     public function newMessagerie() : void 
     {
         $idUserLivre = Services\Utils::request('idUserLivre');
         $idSession = $_SESSION['idUser'];
-
-        if (!isset($idSession))
-        {
-            header("Location: showConnexion");
-            exit();
-        }
 
         $messageManager = new Models\MessageManager();
 
@@ -64,7 +76,6 @@ class MessagerieController extends AbstractController
         $messageManager = new Models\MessageManager();
         $messageManager->sendMessage($message);
 
-        header("Location: messagerie");
-        exit();
+        Services\Utils::redirect("messagerie", ["idConv" => $idConv]);
     }
 }

@@ -99,7 +99,7 @@ class LivreManager extends AbstractEntityManager
     public function getLivresByName(string $title) : array
     {
         $sql = "SELECT L.auteur, L.titre, L.id, L.image, U.pseudo FROM livre L INNER JOIN user U ON L.user_id = U.id
-            WHERE L.titre = :titre";
+            WHERE L.titre LIKE CONCAT ('%',:titre,'%')";
         $res = $this->db->query($sql, [
             'titre' => $title
         ]);

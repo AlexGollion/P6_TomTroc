@@ -43,21 +43,22 @@ class UserController extends AbstractController
         $_SESSION['user'] = $newUser;
         $_SESSION['idUser'] = $newUser->getId();
 
-        $this->view('Accueil', 'home');
+        header("Location: home");
+        exit();
     }
 
     public function connexion() : void
     {
-        $pseudo = Services\Utils::request('pseudo');
+        $email = Services\Utils::request('email');
         $password = Services\Utils::request('password');
 
-        if (empty($pseudo) || empty($password))
+        if (empty($email) || empty($password))
         {
             throw new \Exception("Tous les champs sont obligatoires. 1");
         }
 
         $userManager = new Models\UserManager();
-        $user = $userManager->getUserByLogin($pseudo);
+        $user = $userManager->getUserByEmail($email);
 
         if (!$user)
         {
@@ -73,7 +74,8 @@ class UserController extends AbstractController
         $_SESSION['user'] = $user;
         $_SESSION['idUser'] = $user->getId();
     
-        $this->view('Accueil', 'home');
+        header("Location: home");
+        exit();
     }
 
     public function deconnexion() : void
@@ -81,7 +83,8 @@ class UserController extends AbstractController
         unset($_SESSION['user']);
         unset($_SESSION['idUser']);
 
-        $this->view('Accueil', 'home');
+        header("Location: home");
+        exit();
     }
 
     public function monCompte() : void
