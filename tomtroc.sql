@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:3306
--- Généré le : ven. 20 déc. 2024 à 09:45
+-- Généré le : ven. 10 jan. 2025 à 13:36
 -- Version du serveur : 8.0.30
 -- Version de PHP : 8.1.10
 
@@ -37,7 +37,8 @@ CREATE TABLE `conversation` (
 --
 
 INSERT INTO `conversation` (`id`, `nom`) VALUES
-(4, 'admintest_');
+(4, 'admintest_'),
+(5, 'test2test_');
 
 -- --------------------------------------------------------
 
@@ -61,10 +62,11 @@ CREATE TABLE `livre` (
 --
 
 INSERT INTO `livre` (`id`, `titre`, `auteur`, `image`, `description`, `statut`, `user_id`, `date_creation`) VALUES
-(22, 'The Kinkfolk table', 'Nathan Williams', 'The_Kinkfolk_table_Nathan_Williams_1734686506.png', 'J\'ai récemment plongé dans les pages de \'The Kinfolk Table\' et j\'ai été enchanté par cette œuvre captivante. Ce livre va bien au-delà d\'une simple collection de recettes ; il célèbre l\'art de partager des moments authentiques autour de la table. \r\n\r\nLes photographies magnifiques et le ton chaleureux captivent dès le départ, transportant le lecteur dans un voyage à travers des recettes et des histoires qui mettent en avant la beauté de la simplicité et de la convivialité. \r\n\r\nChaque page est une invitation à ralentir, à savourer et à créer des souvenirs durables avec les êtres chers. \r\n\r\n\'The Kinfolk Table\' incarne parfaitement l\'esprit de la cuisine et de la camaraderie, et il est certain que ce livre trouvera une place spéciale dans le cœur de tout amoureux de la cuisine et des rencontres inspirantes.', 1, 1, '2024-12-20 09:21:46'),
+(22, 'The Kinkfolk table', 'Nathan Williams', 'The_Kinkfolk_table_Nathan_Williams_1734686506.png', 'J\'ai récemment plongé dans les pages de \'The Kinfolk Table\' et j\'ai été enchanté par cette œuvre captivante. Ce livre va bien au-delà d\'une simple collection de recettes ; il célèbre l\'art de partager des moments authentiques autour de la table. \r\n\r\nLes photographies magnifiques et le ton chaleureux captivent dès le départ, transportant le lecteur dans un voyage à travers des recettes et des histoires qui mettent en avant la beauté de la simplicité et de la convivialité. \r\n\r\nChaque page est une invitation à ralentir, à savourer et à créer des souvenirs durables avec les êtres chers. \r\n\r\n\'The Kinfolk Table\' incarne parfaitement l\'esprit de la cuisine et de la camaraderie, et il est certain que ce livre trouvera une place spéciale dans le cœur de tout amoureux de la cuisine et des rencontres inspirantes.                ', 0, 1, '2024-12-20 09:21:46'),
 (23, 'Wabi Sabi', 'Beth Kempton', 'Wabi_Sabi_Beth_Kempton_1734686847.png', 'Wabi Sabi de Beth Kempton', 1, 1, '2024-12-20 09:27:27'),
 (24, 'Milk & honey', 'Rupi Kaur', 'Milk_&_honey_Rupi_Kaur_1734686976.png', 'Milk & honey de Rupi Kaur', 1, 2, '2024-12-20 09:29:36'),
-(25, 'Esther', 'Alabster', 'Esther_Alabster_1734687402.png', 'Esther de Alabster', 1, 2, '2024-12-20 09:36:42');
+(25, 'Esther', 'Alabster', 'Esther_Alabster_1734687402.png', 'Esther de Alabster', 1, 2, '2024-12-20 09:36:42'),
+(26, 'Wabi Sabi', 'Beth Kempton', 'Wabi_Sabi_Beth_Kempton_1735291699.png', 'new description                                                ', 0, 2, '2024-12-27 09:28:19');
 
 -- --------------------------------------------------------
 
@@ -97,7 +99,11 @@ INSERT INTO `message` (`id`, `content`, `date_creation`, `conversation_id`, `id_
 (10, 'test', '2024-12-11 17:03:54', 4, 2),
 (11, 'new test', '2024-12-19 13:26:10', 4, 1),
 (12, 'new test', '2024-12-19 13:27:40', 4, 1),
-(13, 'new test', '2024-12-19 13:28:13', 4, 1);
+(13, 'new test', '2024-12-19 13:28:13', 4, 1),
+(14, 'test', '2025-01-07 13:12:21', 5, 3),
+(15, 'Un  loooooooooooooooooooooooooong message', '2025-01-10 09:33:55', 4, 1),
+(16, 'test messagerie', '2025-01-10 09:38:09', 4, 1),
+(17, 'Autre test', '2025-01-10 09:38:15', 5, 1);
 
 -- --------------------------------------------------------
 
@@ -116,7 +122,9 @@ CREATE TABLE `pivot_conversation` (
 
 INSERT INTO `pivot_conversation` (`id_conversation`, `id_user`) VALUES
 (4, 1),
-(4, 2);
+(4, 2),
+(5, 1),
+(5, 3);
 
 -- --------------------------------------------------------
 
@@ -139,7 +147,9 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`id`, `pseudo`, `email`, `password`, `photo`, `date_creation`) VALUES
 (1, 'test', 'test@gmail.com', '$2y$10$ChmaRn22DUZSBvCP1cguNOofETIWbEG1wwvYEneZ8zAng.LKxI0NS', 'test_1734513684.png', '2024-11-26 10:44:01'),
-(2, 'admin', 'admin@gmail.com', '$2y$10$BHjhH3rsbiFblxzDprYi8ea30HaSHhq.fT5bvA5yRpqmfTz8.v82m', NULL, '2024-12-05 09:30:36');
+(2, 'admin', 'admin@gmail.com', '$2y$10$BHjhH3rsbiFblxzDprYi8ea30HaSHhq.fT5bvA5yRpqmfTz8.v82m', NULL, '2024-12-05 09:30:36'),
+(3, 'test2', 'test2@gmail.com', '$2y$10$iZI.59P9LMXpjdTjMlus4eVp7dwv5nfgj5GEX3cV6uYHZFoCIUiRK', NULL, '2025-01-07 12:42:58'),
+(4, 'test2', 'test2@gmail.com', '$2y$10$hBKT4u862VIsyIrI5vy1g.yYTbM38orF7gha9emSQHgukGpg4TvE2', NULL, '2025-01-07 12:49:33');
 
 --
 -- Index pour les tables déchargées
@@ -188,25 +198,25 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT pour la table `conversation`
 --
 ALTER TABLE `conversation`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT pour la table `livre`
 --
 ALTER TABLE `livre`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT pour la table `message`
 --
 ALTER TABLE `message`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT pour la table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
