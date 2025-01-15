@@ -59,4 +59,16 @@ class Utils
         self::dump($var);
         die();
     }
+
+    public static function headerMessagerieSplit() : string
+    {
+        $nbMessage = $_SESSION["headerMessagerie"];
+        $array = str_split($nbMessage);
+        $res = '<i class="fa-regular fa-comment"></i> Messagerie ';
+        foreach ($array as $number)
+        {
+            $res .= '<i class="fa-solid fa-' . $number . '"></i>';
+        }
+        return $res;
+    }
 }

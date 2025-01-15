@@ -203,4 +203,21 @@ class MessageManager extends AbstractEntityManager
             return $return[0]["idConv"];
         }
     }
+
+    public function headerMessagerie(int $userId) : int
+    {
+        $sql = "SELECT COUNT(M.id) as nbMessage FROM conversation C 
+            INNER JOIN pivot_conversation P ON C.id = P.id_conversation 
+            INNER JOIN message M ON M.conversation_id = C.id
+            WHERE P.id_user = :id AND M.read_statut = false AND M.id_expediteur != :id";
+        $res = $this->db->query($sql, ['id' => $userId]);
+        $nbMessage = $res->fetch();
+        return $nbMessage["nbMessage"];
+    }
+
+    public function updateReadMessage(int $idUser, int $idConv) : void
+    {
+        $sql = "UPDATE message SET read_statut = true WHERE conversation_id = :conversation_id AND id_expediteur != :idUser";
+        $this->db->query($sql, ["conversation_id" => $idConv, "idUser" => $idUser]);
+    }
 }

@@ -16,6 +16,7 @@ class MessagerieController extends AbstractController
         if(isset($idConv))
         {
             $conversations = $messageManager->getAllConversation($idSession, $idConv);
+            $messageManager->updateReadMessage($idSession, $idConv);
             $this->view('Messagerie', 'messagerie', ["conversations" => $conversations, "selected" => $idConv]);
         }
         else
@@ -29,11 +30,12 @@ class MessagerieController extends AbstractController
             else 
             {
                 $conversations = $messageManager->getAllConversation($idSession, $idLastConv);
+                $messageManager->updateReadMessage($idSession, $idLastConv);
                 $this->view('Messagerie', 'messagerie', ["conversations" => $conversations, "selected" => $idLastConv]);
             }
         }
-
-
+        
+        
     }
     
     public function newMessagerie() : void 
@@ -77,5 +79,13 @@ class MessagerieController extends AbstractController
         $messageManager->sendMessage($message);
 
         Services\Utils::redirect("messagerie", ["idConv" => $idConv]);
+    }
+
+    public function headerMessagerie() : void 
+    {
+        $userId = $_SESSION['idUser'];
+        $messageManager = new Models\MessageManager();
+        $nbMessage = $messageManager->headerMessagerie($userId);
+        $_SESSION["headerMessagerie"] = $nbMessage;
     }
 }

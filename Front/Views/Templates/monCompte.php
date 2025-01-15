@@ -30,7 +30,7 @@
                 <h2><?= $user->getPseudo(); ?></h2>
                 <p id="date">Membre depuis <?= date_diff($user->getDateCreationDateTime(), date_create(date('Y-m-d H:i:s')))->format('%Y ans et %m mois'); ?></p>
                 <p id="bibliotheque">Bibliothèque</p>
-                <p> <i class="fa-solid fa-pause"></i> <?= count($livres) ?> livres<p>
+                <p> <?= TomTroc\Front\Components\Component::renderIcon("iconLivre") ?> <?= count($livres) ?> livres<p>
             </div>
         </div>
         

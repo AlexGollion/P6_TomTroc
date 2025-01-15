@@ -2,6 +2,7 @@
 
 namespace TomTroc\App;
 use TomTroc\App\Middleware as Middleware;
+use TomTroc\App\Controller as Controller;
 
 class Router 
 {
@@ -36,6 +37,8 @@ class Router
     private static function middlewareCheck(string $action)
     {
         $middleware = new Middleware\Middleware();
+
+        self::headerMessagerie();
     
         if (self::$routes[$action]["logged"])
         {
@@ -56,6 +59,7 @@ class Router
     
     private static function redirect(string $action)
     {
+        self::header($action);
         self::callController(self::$routes[$action]["action"], self::$routes[$action]["controller"]);
     }
 
@@ -63,5 +67,39 @@ class Router
     {
         $newController = new $controllerClass();
         $newController->$action();
+    }
+
+    private static function header(string $action)
+    {
+        switch ($action) {
+            case "home" : 
+                $_SESSION["header"] = "home";
+                break;
+            case "showAllLivres" :
+                $_SESSION["header"] = "showAllLivres";
+                break;
+            case "showConnexion" :
+                $_SESSION["header"] = "showConnexion";
+                break;
+            case "monCompte" :
+                $_SESSION["header"] = "monCompte";
+                break;
+            case "messagerie" :
+                $_SESSION["header"] = "messagerie";
+                break;
+            default :
+                break;
+        }
+    }
+
+    private static function headerMessagerie() 
+    {
+        $middleware = new Middleware\Middleware();
+         
+        if ($middleware->isLogged())
+        {
+            $messagerieController = new Controller\MessagerieController();
+            $messagerieController->headerMessagerie();
+        }
     }
 }

@@ -15,7 +15,7 @@ spl_autoload_register(function($className)
         }
         else
         {
-            throw new \Exception('Erreur autoload');
+            throw new \Exception('Erreur autoload 1');
         }
     }
     else if (count($classPath) == 3)
@@ -28,11 +28,11 @@ spl_autoload_register(function($className)
         }
         else
         {
-            throw new \Exception('Erreur autoload');
+            throw new \Exception('Erreur autoload 2');
         }
     }
     else
     {
-        throw new \Exception('Erreur autoload');
+        throw new \Exception('Erreur autoload 3');
     }
 });

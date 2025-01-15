@@ -82,6 +82,7 @@ class UserController extends AbstractController
     {
         unset($_SESSION['user']);
         unset($_SESSION['idUser']);
+        unset($_SESSION["headerMessagerie"]);
 
         header("Location: home");
         exit();

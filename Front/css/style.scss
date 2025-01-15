@@ -48,8 +48,21 @@ header {
         transform: scaleX(-1);
     }
 
+    .fa-solid {
+        font-weight: 500;
+        font-size: 10px;
+        color: white;
+        background-color: black;
+        border-radius: 50px;
+        padding: 5px;
+    }
+
     a {
         font-family: "Inter";
+    }
+
+    .headerSelectedPage {
+        font-weight: bold;
     }
     
     div {
