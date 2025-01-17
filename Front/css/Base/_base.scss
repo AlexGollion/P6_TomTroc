@@ -1,0 +1,38 @@
+body {
+    margin: 0px;
+}
+
+h1, h2 {
+    font-family: var(--font-title);
+}
+
+h1 {
+    font-size: 30px;
+    font-weight: lighter;
+    margin-bottom: 0px;
+}
+
+h2 {
+    font-size: 30px;
+    font-weight: lighter;
+}
+
+section {
+    display: flex;
+    justify-content: center;
+}
+
+p, span, label, textarea, input, select, tr, td {
+    font-family: var(--font-text);
+    font-weight: 300;
+}
+
+img {
+    width: 100%;
+}
+
+header, .join, .marche, .valeur, .error, .dernierAjout, .livres, .monCompte, .tableau, .editLivre, .messagerie {
+    padding-left: 5%;
+    padding-right: 5%;
+    font-family: var(--font-title);
+}

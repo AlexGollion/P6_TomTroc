@@ -6,7 +6,10 @@ use TomTroc\Services as Services;
 
 class LivreController extends AbstractController
 {
-
+    /**
+     * Affiche la page d'acceuil
+     * @return void
+     */
     public function home() : void
     {
         $livreManager = new Models\LivreManager();
@@ -14,11 +17,20 @@ class LivreController extends AbstractController
         $this->view('Acceuil', 'home', ["livres" => $livres]);
     }
 
+    /** 
+     * Affiche la page d'ajout de livre
+     * @return void
+     */
     public function showAddLivre() : void
     {
         $this->view('Show addLivre', 'addLivre');
     }
 
+
+    /**
+     * Permet d'ajouter un livre
+     * @return void
+     */
     public function addLivre() : void
     {
         $titre = Services\Utils::request('titre');
@@ -60,6 +72,10 @@ class LivreController extends AbstractController
         exit();
     }
 
+    /**
+     * Permet de supprimer un livre
+     * @return void
+     */
     public function deleteLivre() : void
     {
         $id = $_SESSION['idUser'];
@@ -91,6 +107,10 @@ class LivreController extends AbstractController
         $this->view('Mon compte', 'monCompte', ["user" => $user, "livres" => $livres]);
     }
 
+    /**
+     * Affiche la page nos livres à l'échange
+     *  @return void
+     */
     public function showAllLivres() : void
     {
         $livreManager = new Models\LivreManager();
@@ -99,6 +119,10 @@ class LivreController extends AbstractController
         $this->view("Livre à l'échange", 'allLivres', ["livres" => $livres]);
     }
 
+    /**
+     * Affiche la page de détail d'un livre
+     * @return void
+     */
     public function detailLivre() : void
     {
         $idLivre = Services\Utils::request('idLivre');
@@ -113,6 +137,10 @@ class LivreController extends AbstractController
         $this->view("Detail livre", "detailLivre", ["livre" => $data[0]["livre"], "user" => $data[0]["user"]]);
     }
 
+    /**
+     * Affiche la page d'édition d'un livre
+     * @return void
+     */
     public function editLivre() : void
     {
         $idLivre = Services\Utils::request('idLivre');
@@ -128,6 +156,10 @@ class LivreController extends AbstractController
         $this->view("Modifier un livre", "editLivre", ["livre" => $livre]);
     }
 
+    /**
+     * Permet de mettre à jour un livre
+     * @return void
+     */
     public function updateLivre() : void
     {
         $idLivre = Services\Utils::request('idLivre');
@@ -162,7 +194,7 @@ class LivreController extends AbstractController
             $nameImage = $titre . " " . $auteur . " " . time() . '.' . $extension;
             $nameImage = str_replace(" ", "_", $nameImage);
             $newLivre->setImage($nameImage);
-            unlink("./Front/images/livres/" . $data["livre"]->getImage());
+            unlink("./Front/images/livres/" . $oldLivre->getImage());
             if (!move_uploaded_file($image['tmp_name'], "./Front/images/livres/" . $nameImage))
             {
                 throw new \Exception("Le livre n'a pas été mis dans le dossier");
@@ -189,6 +221,10 @@ class LivreController extends AbstractController
         exit();
     }
 
+    /**
+     * Permet de rechercher un livre puis redirige vers nos livres à l'échange
+     * @return void
+     */
     public function searchLivres() : void
     {
         $titleLivre = Services\Utils::request('searchBar');

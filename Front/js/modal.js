@@ -16,7 +16,7 @@ function modal({container, overlay, openModalBtn, closeModalBtn, image, btnChoix
         if (preview.src != null)
         {
             console.log("ici");
-            const imageFinal = document.getElementById("imageLivre");
+            const imageFinal = document.getElementById("newImage");
             imageFinal.src = preview.src;
         }
     }

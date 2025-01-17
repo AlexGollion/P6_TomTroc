@@ -73,12 +73,10 @@ class Livre extends AbstractEntity
     {
         if ($this->statut)
         {
-            echo "ici";
             return 1;
         }
         else
         {
-            echo "la";
             return 0;
         }
     }

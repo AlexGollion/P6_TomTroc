@@ -1,8 +1,9 @@
 <?php 
     $formData = array (
         "action" => "changeInfo",
+        "class" => "containerForm",
         "label" => ["Adresse email", "Mot de passe", "Pseudo"],
-        "input" => ["Email", "password", "pseudo"],
+        "input" => ["email", "password", "pseudo"],
         "type" => ["email", "password", "text"],
         "placeholder" => [$user->getEmail(), "••••••••", $user->getPseudo()],
         "submit" => "Enregistrer"
@@ -16,7 +17,11 @@
     <section class="compteInfo">
         <div class="compte">
             <div class="compteImg">
-                <img class="photoProfil" src="./Front/images/profils/<?= $user->getPhoto() ?>" alt="" >
+                <?php if ($user->getPhoto() != null) { ?>
+                    <img class="photoProfil" id="newImage" src="./Front/images/profils/<?= $user->getPhoto() ?>" alt="" >
+                <?php } else { ?>
+                    <img class="photoProfil" id="newImage" src="" alt="" >
+                <?php } ?>
                 <button class="openModal">modifier</button>
                 <div class="overlay hidden"></div>
                 <section class="modal hidden">
@@ -42,8 +47,6 @@
 </section>
 
 <section class="tableau">
-    <a href="showAddLivre" class="greenLink">Ajouter un livre</a>
-
     <table>
         <tr>
             <th class="first">Photo</th>
@@ -53,7 +56,7 @@
             <th>Disponibilité</th>
             <th>Action</th>
         </tr>
-
+        
         <?php foreach($livres as $index => $livre) { ?>
             <tr class="<?= TomTroc\Services\Utils::changeColorTableau($index) ?>">
                 <td class="first"><img src=<?= "./Front/images/livres/" . $livre->getImage() ?>></td>
@@ -69,4 +72,5 @@
             </tr>
         <?php } ?>
     </table>
-</section>
+    <a href="showAddLivre" class="greenLink">Ajouter un livre</a>
+    </section>

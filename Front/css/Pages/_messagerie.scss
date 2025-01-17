@@ -1,0 +1,193 @@
+.messagerie {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: var(--main-background-color);
+    height: 800px;
+    padding-left: 10%;
+    padding-right: 10%;
+
+    .listeConversation {
+        flex-direction: column;
+        justify-content: normal;
+        background-color: var(--second-background-color);
+        width: 25%;
+
+        h1 {
+            margin-left: 25px;
+        }
+
+        .convSelected {
+            background-color: white;
+        }
+
+        a {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            text-decoration: none;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            padding: 5%;
+
+            .imgConv {
+                display: flex;
+                align-items: center;
+                width: 22%;
+                margin-right: 7%;
+                margin-left: 2%;
+
+                img {
+                   border-radius: 50%
+                }
+            }
+            
+            .listeConversationContent {
+                width: 45%;
+                position: relative;
+                padding-top: 5px;
+                margin-left: 7%;
+
+                h3, p {
+                    margin: 0px;
+                }
+
+                h3 {
+                    font-weight: 500;
+                }
+
+                h3, .dateLastMessage {
+                    color: black;
+                    font-size: 14px;
+                    margin-bottom: 15px;
+                }
+
+                p {
+                    color: var(--gray-color);
+                    font-size: 12px;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+
+                }
+
+                .dateLastMessage {
+                    position: absolute;
+                    top: 5px;
+                    right: 0px;
+                    font-weight: 400;
+                }
+            }
+        }
+    }
+
+    .sectionMessage {
+        display: flex;
+        flex-direction: column;
+        width: 80%;
+        padding: 2%;
+        padding-bottom: 5%;
+        height: 700px;
+        padding-left: 5%;
+
+        .sectionMessageNom {
+            display: flex;
+            flex-direction: row;
+            width: 20%;
+
+            .imgConv {
+                display: flex;
+                align-items: center;
+                width: 22%;
+                margin-right: 7%;
+                margin-left: 2%;
+
+                img {
+                   border-radius: 50%
+                }
+            }
+
+            h3 {
+                color: black;
+            }
+        }
+        
+        .listeMessage {
+            display: flex;
+            flex-direction: column-reverse;
+            justify-content: end;
+            overflow-y: scroll;
+            height: 85%;
+            
+            .messageRecu, .messageEnvoyer {
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+                font-size: 14px;
+            }
+    
+            .messageRecu {    
+                span {
+                    color: var(--gray-color);
+                }
+    
+                p {
+                    background-color: white;
+                    width: 60%;
+                    padding: 5px;
+                    padding-top: 10px;
+                    padding-bottom: 10px;
+                    margin-top: 5px;
+                    border-radius: 5px;
+                }
+            }
+    
+            .messageEnvoyer {
+                width: 60%;
+                margin-left: 40%;
+                
+                span {
+                    color: var(--gray-color);
+                    text-align: end;
+                }
+    
+                p {
+                    background-color: var(--light-gray-color);
+                    padding: 5px;
+                    padding-top: 10px;
+                    padding-bottom: 10px;
+                    margin-top: 5px;
+                    border-radius: 5px;
+                }
+            }
+        }
+
+
+        form {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            width: 100%;
+            margin-top: 5%;
+
+            .message {
+                border: none;
+                width: 75%;
+                height: 40px;
+                padding: 5px;
+            }
+            
+            .submit {
+                background-color: var(--green-color);
+                color: white;
+                font-size: 16px;
+                border: none;
+                border-radius: 10px;
+                padding: 10px;
+                width: 15%;
+                height: 50px;
+                
+            }
+        }
+    }
+}

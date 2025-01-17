@@ -1,0 +1,68 @@
+.greenLink {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--green-color);
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 25px;
+    border: none;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    text-decoration: none;
+    font-family: "Inter";
+}
+
+.whiteLink {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 25px;
+    border: 2px solid var(--green-color);
+    color: var(--green-color);
+    background-color: white;
+    font-size: 16px;
+    cursor: pointer;
+    text-decoration: none;
+    font-family: "Inter";
+}
+
+.greenBtn {
+    
+    input {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: var(--green-color);
+        border-radius: 10px;
+        padding: 20px;
+        margin-top: 25px;
+        border: none;
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+    }
+}
+
+.whiteBtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    border: 2px solid;
+    border-color: var(--green-color);
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 25px;
+    
+    input {
+        border: none;
+        background-color: white;
+        color: var(--green-color);
+        font-size: 16px;
+        cursor: pointer;
+    }
+}

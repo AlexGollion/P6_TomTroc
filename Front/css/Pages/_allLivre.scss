@@ -1,0 +1,88 @@
+.livres {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--second-background-color);
+    align-items: center;
+    padding: 5%;
+    padding-left: 17%;
+    padding-right: 17%;
+
+    .search {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 100%;
+        padding-bottom: 50px;
+
+        form {
+            position: relative;
+
+            .fa-magnifying-glass {
+                position: absolute;
+                top: 15px;
+                left: 5px;
+                color: var(--gray-color);
+            }
+    
+            input {
+                border: none;
+                height: 45px;
+                width: 250px;
+                font-family: var(--font-text);
+                font-weight: 300;
+                color: var(--gray-color);
+                padding-left: 30px;
+            }
+        }
+
+    }
+    
+    .grilleLivre {
+        display: grid;
+        width: 100%;
+        grid-template-columns: repeat(4, 22%);
+        gap: 50px 4%;
+        
+        a {
+            width: 100%;
+            padding: 0px;
+            border: none;
+            background-color: white;
+            text-decoration: none;
+            
+            img {
+                width: 100%;
+            }
+            
+            h2, h3, p {
+                display: flex;
+                justify-content: left;
+                padding-left: 15px;
+                margin: 0px;
+            }
+            
+            h2 {
+                font-size: 16px;
+                margin-top: 15px;
+                color: black;
+            }
+            
+            h3, p {
+                color: var(--gray-color);
+            }
+            
+            h3 {
+                font-size: 14px;
+                font-weight: normal;
+                margin-top: 8px;
+            }
+            
+            p {
+                font-size: 10px;
+                font-style: italic;
+                margin-top: 15px;
+                margin-bottom: 15px;
+            }
+        }
+    }
+}

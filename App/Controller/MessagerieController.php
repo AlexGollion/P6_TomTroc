@@ -6,6 +6,10 @@ use TomTroc\Services as Services;
 
 class MessagerieController extends AbstractController
 {
+    /**
+     * Affiche la messagerie
+     * @return void
+     */
     public function messagerie() : void
     {
         $idSession = $_SESSION['idUser'];
@@ -38,10 +42,20 @@ class MessagerieController extends AbstractController
         
     }
     
+    /**
+     * Créer une nouvelle messagerie et redirige vers la page de messagerie
+     * @return void
+     */
     public function newMessagerie() : void 
     {
         $idUserLivre = Services\Utils::request('idUserLivre');
         $idSession = $_SESSION['idUser'];
+
+        if ($idSession == $idUserLivre)
+        {
+            header("Location: messagerie");
+            exit();
+        }
 
         $messageManager = new Models\MessageManager();
 
@@ -61,6 +75,10 @@ class MessagerieController extends AbstractController
         exit();
     }
 
+    /**
+     * Permet d'envoyer un message
+     * @return void
+     */
     public function sendMessage() : void
     {
         $userId = $_SESSION['idUser'];
@@ -81,6 +99,10 @@ class MessagerieController extends AbstractController
         Services\Utils::redirect("messagerie", ["idConv" => $idConv]);
     }
 
+    /**
+     * Permet d'afficher le nombre de message non lu dans le header
+     * @return void
+     */
     public function headerMessagerie() : void 
     {
         $userId = $_SESSION['idUser'];

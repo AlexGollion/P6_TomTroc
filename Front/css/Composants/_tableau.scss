@@ -1,0 +1,125 @@
+.tableau {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--second-background-color);
+    padding-top: 10px;
+    padding-bottom: 30px;
+
+    table {
+        background-color: white;
+        border-radius: 20px;
+        border: none;
+        padding-top: 10px;
+        margin-top: 20px;
+        width: 100%;
+
+        tr {
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            border: none;
+
+            th {
+                font-size: 14px;
+                width: 20%;
+                display: flex;
+                justify-content: start;
+                padding: 2%;
+                padding-bottom: 10px;
+                border-bottom: 1px solid var(--main-background-color);
+            }
+
+            td {
+                display: flex;
+                flex-direction: row;
+                justify-content: start;
+                align-items: center;
+                width: 20%;
+                font-size: 14px;
+                padding: 2%;
+                overflow: hidden;
+                height: 60px;
+
+                div {
+                    display: flex;
+                    justify-content: center;
+                    white-space: pre-wrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    width: 200px;
+                    height: 50px;
+                }
+
+                img {
+                    width: 50%;
+                }
+            }
+
+            .first {
+                padding-left: 4%;
+            }
+
+            .disponible {                
+                p {
+                    color: white;
+                    background-color: #6DC5A1;
+                    border-radius: 20px;
+                    padding-top: 5px;
+                    padding-bottom: 5px;
+                    padding-left: 15px;
+                    padding-right: 15px;
+                }
+            }
+
+            .non {
+                p {
+                    color: white;
+                    background-color: #C56D6D;
+                    border-radius: 20px;
+                    padding-top: 5px;
+                    padding-bottom: 5px;
+                    padding-left: 15px;
+                    padding-right: 15px;
+                }
+            }
+
+            .indisponible {
+                background-color: red;
+                border-radius: 20px;
+                width: 20%;
+                height: 10%;
+            }
+
+            .supprimerLink {
+                border: none;
+                margin-left: 10px;
+                cursor: pointer;
+                color: #CB2D2D;
+                border: 0px;
+                padding: 0px;
+                text-decoration: underline;
+                background-color: inherit;
+            }
+
+            .editLink {
+                border: none;
+                margin-right: 10px;
+                cursor: pointer;
+                color: black;
+                border: 0px;
+                padding: 0px;
+                text-decoration: underline;
+                background-color: inherit;
+            }
+        }
+    }
+
+    .tableauColorA {
+        background-color: white;
+    }
+
+    .tableauColorB {
+        background-color: var(--light-gray-color);
+    }
+}

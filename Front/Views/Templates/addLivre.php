@@ -11,7 +11,7 @@
             </section>
     
             <label for="photo">Photo</label>
-            <img id="imageLivre" src="" alt=""> 
+            <img id="newImage" src="" alt=""> 
             <button class="openModal">modifier la photo</button>
         </section>
         <section id="containerForm">

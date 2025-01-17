@@ -2,7 +2,7 @@
 
 ?>
 
-<form action=<?= $formData["action"] ?> method="post" enctype="multipart/form-data">
+<form class="<?= $formData["class"] ?>" action=<?= $formData["action"] ?> method="post" enctype="multipart/form-data">
     <?php foreach($formData["label"] as $index => $label) { ?>
         <label for=<?= $label ?>> <?= $label ?> </label>
         <?php if (isset($formData["placeholder"])) { ?>

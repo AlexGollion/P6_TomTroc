@@ -5,6 +5,12 @@ use TomTroc\Services as Services;
 
 class MessageManager extends AbstractEntityManager
 {
+    /**
+     * Permet de récupérer toutes les conversations d'un utilisateur
+     * @param int $userId: id de l'utilisateur
+     * @param ?int $idSelectedConv: id de la conversation selectionné, peut etre null
+     * @return array: liste de toutes les conversations
+     */
     public function getAllConversation(int $userId, ?int $idSelectedConv): array
     {
         $sqlPivot = "SELECT * FROM conversation C 
@@ -51,6 +57,11 @@ class MessageManager extends AbstractEntityManager
         return $return;
     }
 
+    /**
+     * Permet de récupérer le dernier message d'une conversation
+     * @param int $idConv: id de la conversation
+     * @return ?Message: le dernier message, null si aucun message dans la conversation
+     */
     private function lastMessage(int $idConv) : ?Message
     {
         $sql = "SELECT * FROM Message M INNER JOIN Conversation C ON C.id = M.conversation_id WHERE M.conversation_id = :id
@@ -68,6 +79,11 @@ class MessageManager extends AbstractEntityManager
         }
     }
 
+    /**
+     * Permet de récupérer tous les messages d'une conversation
+     * @param Conversation $conv: conversation dont on veux les messages
+     * @return Conversation: la conversation avec tous les messages
+     */
     private function getAllMessages(Conversation $conv) : Conversation
     {
         $sql = "SELECT * FROM Message M INNER JOIN Conversation C ON C.id = M.conversation_id WHERE M.conversation_id = :id
@@ -99,6 +115,11 @@ class MessageManager extends AbstractEntityManager
         return $user;
     }
 
+    /**
+     * Permet de créer une conversation
+     * @param array $users: les utilisateurs de la conversation
+     * @return void
+     */
     public function createConversation(array $users) : void
     {
         $sqlConv = "INSERT INTO conversation (nom) VALUES (:nom)";
@@ -132,6 +153,12 @@ class MessageManager extends AbstractEntityManager
         return $res;
     }
 
+    /**
+     * Permet de savoir si une conversation existe
+     * @param int $idUser1: id du premier utilisateur
+     * @param int $idUser2: id du second utilisateur
+     * @return int: retourne -1 si la conversation n'éxiste pas, sinon reoturne l'id de la conversation
+     */
     public function checkIfConvExist(int $idUser1, int $idUser2) : int
     {
         $sql = "SELECT id_conversation FROM pivot_conversation WHERE id_user = :id";
@@ -153,6 +180,11 @@ class MessageManager extends AbstractEntityManager
         return $id;
     }
 
+    /**
+     * Permet d'envoyer un message
+     * @param Message $message: mesage à envoyer
+     * @return void
+     */
     public function sendMessage(Message $message) : void
     {
         $sql = "INSERT INTO message (content, date_creation, conversation_id, id_expediteur) VALUES (:content, :date_creation, :conversation_id, :id_expediteur)";
@@ -164,6 +196,11 @@ class MessageManager extends AbstractEntityManager
         ]);
     }
 
+    /**
+     * Permet de récupérer l'id de la dernière conversation d'un utilisateur
+     * @param int $userId: id de l'utilisateur
+     * @return int: id de la dernière conversation
+     */
     public function getLastConversationId(int $userId) : int
     {
         $sqlPivot = "SELECT * FROM conversation C 
@@ -204,6 +241,11 @@ class MessageManager extends AbstractEntityManager
         }
     }
 
+    /**
+     * Permet de récupérer le nombre de message non lu d'un utilisateur
+     * @param int $userId: id de l'utilisateur
+     * @return int: nombre de message non lu
+     */
     public function headerMessagerie(int $userId) : int
     {
         $sql = "SELECT COUNT(M.id) as nbMessage FROM conversation C 
@@ -215,6 +257,12 @@ class MessageManager extends AbstractEntityManager
         return $nbMessage["nbMessage"];
     }
 
+    /**
+     * Permet de mettre à jour la lecture d'un message
+     * @param int $idUser: id de l'utilisateur
+     * @param int $idConv: id de la conversation
+     * @return void
+     */
     public function updateReadMessage(int $idUser, int $idConv) : void
     {
         $sql = "UPDATE message SET read_statut = true WHERE conversation_id = :conversation_id AND id_expediteur != :idUser";

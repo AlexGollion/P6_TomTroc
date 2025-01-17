@@ -4,6 +4,11 @@ namespace TomTroc\App\Models;
 
 class UserManager extends AbstractEntityManager
 {
+    /**
+     * Permet de créer un utilisateur
+     * @param User $user: utilisateur à ajouter
+     * @return void
+     */
     public function createUser(User $user) : void
     {
         $sql = "INSERT INTO user (pseudo, email, password, date_creation) VALUES (:pseudo, :email, :password, :date_creation)";
@@ -15,6 +20,11 @@ class UserManager extends AbstractEntityManager
         ]);
     }
 
+    /**
+     * Permet de récupérer un utilisateur par son email
+     * @param string $email: email de l'utilisateur
+     * @return ?User: retorune l'utilisateur si il éxiste, sinon retourne null
+     */
     public function getUserByEmail(string $email) : ?User
     {
         $sql = "SELECT * FROM user WHERE email = :email";
@@ -27,6 +37,11 @@ class UserManager extends AbstractEntityManager
         return null;
     }
     
+    /**
+     * Permet de récupérer un utilisateur par son id
+     * @param int $id: id de l'utilisateur
+     * @return ?User: retourne l'utilisateur si il éxiste, sinon retourne null
+     */
     public function getUserById(int $id) : ?User
     {
         $sql = "SELECT * FROM user WHERE id = :id";
@@ -39,6 +54,15 @@ class UserManager extends AbstractEntityManager
         return null;
     }
 
+    /**
+     * Permet de mettre à jour un utilisateur
+     * @param int $id: id de l'utilisateur
+     * @param ?string $pseudo: pseudo de l'utilisateur, peut etre null
+     * @param ?string $password: mot de passe de l'utilisateur, peut etre null
+     * @param ?string $image: photo de profil de l'utilisateur, peut etre null
+     * @param ?string $email: email de l'utilisateur, peut etre null
+     * @return void
+     */
     public function updateUser(int $id, ?string $pseudo = null, ?string $password = null, ?string $image = null, ?string $email = null) : void
     {
         $nbParams = $this->compteInfo([$pseudo, $password, $image, $email]);
@@ -48,7 +72,6 @@ class UserManager extends AbstractEntityManager
         $dataSql = [];
         $dataSql = $this->addInfo(["pseudo" => $pseudo, "password" => $password, "photo" => $image, "email" => $email]);
         $dataSql['id'] = $id;
-        echo $sql;
 
         $this->db->query($sql, $dataSql);
         

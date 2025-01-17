@@ -4,6 +4,7 @@
         $title = "Inscription";
         $formData = array (
             "action" => "inscription",
+            "class" => "",
             "label" => ["Pseudo", "Email", "Mot de passe"],
             "input" => ["pseudo", "email", "password"],
             "type" => ["text", "email", "password"],
@@ -18,6 +19,7 @@
         $title = "Connexion";
         $formData = array (
             "action" => "connexion",
+            "class" => "",
             "label" => ["Adresse email", "Mot de passe"],
             "input" => ["email", "password"],
             "type" => ["text", "password"],

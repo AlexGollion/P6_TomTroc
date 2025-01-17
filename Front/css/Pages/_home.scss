@@ -1,0 +1,177 @@
+.join, .marche, .valeur, .error, .connexion
+{
+    background-color: var(--main-background-color);
+}
+
+.marche, .valeur, .dernierAjout
+{
+    flex-direction: column;
+    align-items: center;
+}
+
+.join {
+    flex-direction: row;
+    align-items: center;
+    padding-top: 5%;
+    padding-bottom: 5%;
+
+    div {
+        display: flex;
+        flex-direction: column;
+        width: 25%;
+        margin-right: 3%;
+
+        p {
+            font-size: 14px;
+        }
+
+        .greenLink {
+            width: 25%;
+        }
+    }
+
+    .joinImg {
+        display: flex;
+        flex-direction: column;
+        align-items: end;
+        width: 30%;
+        margin-left: 3%;
+    
+        span {
+            margin-top: 10px;
+            color: var(--gray-color);
+            font-size: 12px;
+            font-style: italic;
+        }
+    }
+}
+
+.dernierAjout {
+    background-color: var(--second-background-color);
+    padding-top: 5%;
+
+    h2 {
+        margin-bottom: 50px;
+    }
+
+    .livreHome {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        width: 70%;
+        margin-top: 20px;
+        margin-bottom: 20px;
+
+        a {
+            width: 225px;
+            padding: 0px;
+            border: none;
+            background-color: white;
+            text-decoration: none;
+            
+            img {
+                width: 100%;
+            }
+            
+            h2, h3, p {
+                display: flex;
+                justify-content: left;
+                padding-left: 15px;
+                margin: 0px;
+            }
+            
+            h2 {
+                font-size: 16px;
+                margin-top: 15px;
+                color: black;
+            }
+            
+            h3, p {
+                color: var(--gray-color);
+            }
+            
+            h3 {
+                font-size: 14px;
+                font-weight: normal;
+                margin-top: 8px;
+            }
+            
+            p {
+                font-size: 10px;
+                font-style: italic;
+                margin-top: 15px;
+                margin-bottom: 15px;
+            }
+        }
+    }
+
+    .greenLink {
+        margin-bottom: 70px;
+    }
+}
+
+.valeur {
+    display: flex;
+    padding-top: 5%;
+    padding-bottom: 5%;
+
+    .valeurContent {
+        width: 30%;
+
+        h2 {
+            margin-bottom: 30px;
+        }
+
+        div {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            margin-top: 20px;
+            width: 100%;
+    
+            span {
+                color: var(--gray-color);
+                font-size: 12px;
+                font-style: italic;
+                margin-top: 15px;
+            }
+        
+            img {
+                width: 40%;
+            }
+        }
+    }
+
+}
+
+.marche {
+    padding-top: 5%;
+    padding-bottom: 50px;
+    text-align: center;
+
+
+    .cardMarche {
+        display: flex;
+        flex-direction: row;
+        width: 70%;
+        justify-content: space-around;
+        margin-bottom: 20px;
+
+        div {
+            display: flex;
+            text-align: center;
+            justify-content: center;
+            background-color: white;
+            border-radius: 15px;
+            padding: 10px;
+            padding-bottom: 25px;
+            padding-top: 25px;
+            width: 225px;
+        }
+    }
+
+    .whiteLink {
+        background-color: var(--main-background-color);
+        margin-bottom: 50px;
+    }
+}

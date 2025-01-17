@@ -44,7 +44,7 @@
             <section class="listeMessage">
                 <?php foreach($conversationOpen->getMessages() as $message) { ?>
                     <div class="<?= TomTroc\Services\Utils::changeColorMessage($message->getExpediteurId()) ?>">
-                        <span><?= $conv->getLastMessage()->getDateCreationDateTime()->format("m.d H:i") ?></span>
+                        <span><?= $message->getDateCreationDateTime()->format("m.d H:i") ?></span>
                         <p><?= $message->getContent() ?></p>
                     </div>
                 <?php } ?>

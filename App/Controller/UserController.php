@@ -6,16 +6,28 @@ use TomTroc\Services as Services;
 
 class UserController extends AbstractController
 {
+    /**
+     * Affiche la page d'inscription
+     * @return void
+     */
     public function showInscription() : void
     {
         $this->view('Inscrption', 'connexion', ["inscription" => true]);
     }
     
+    /**
+     * Affiche la page de connexion
+     * @return void
+     */
     public function showConnexion() : void
     {
         $this->view('Connexion', 'connexion', ["inscription" => false]);
     }
 
+    /**
+     * Créer un nouvelle utilisateur 
+     * @return void
+     */
     public function inscription() : void
     {
         $pseudo = Services\Utils::request('pseudo');
@@ -38,15 +50,20 @@ class UserController extends AbstractController
 
         $userManager = new Models\UserManager();
         $userManager->createUser($newUser);
+        $user = $userManager->getUserByEmail($email);
 
         
-        $_SESSION['user'] = $newUser;
-        $_SESSION['idUser'] = $newUser->getId();
+        $_SESSION['user'] = $user;
+        $_SESSION['idUser'] = $user->getId();
 
         header("Location: home");
         exit();
     }
 
+    /**
+     * Permet de se connecter en tant qu'utilisateur
+     * @return void
+     */
     public function connexion() : void
     {
         $email = Services\Utils::request('email');
@@ -78,6 +95,10 @@ class UserController extends AbstractController
         exit();
     }
 
+    /**
+     * Permet de se déconnecter
+     * @return void
+     */
     public function deconnexion() : void
     {
         unset($_SESSION['user']);
@@ -88,6 +109,10 @@ class UserController extends AbstractController
         exit();
     }
 
+    /**
+     * Affiche la page mon compte
+     * @return void
+     */
     public function monCompte() : void
     {
         $id = $_SESSION['idUser'];
@@ -102,6 +127,10 @@ class UserController extends AbstractController
         $this->view('Mon compte', 'monCompte', $data);
     }
 
+    /**
+     * Affiche la page de compte public d'un utilisateur
+     * @return void
+     */
     public function comptePublic() : void
     {
         $id = Services\Utils::request('userId');
@@ -132,17 +161,22 @@ class UserController extends AbstractController
         return ["livres" => $livres, "user" => $user];
     }
 
+    /**
+     * Permet de mettre à jour les informations d'un utilisateur
+     * @return void
+     */
     public function changeInfo() : void
     {
         $id = $_SESSION['idUser'];
         $pseudo = Services\Utils::request('pseudo');
         $password = Services\Utils::request('password');
+        $email = Services\Utils::request('email');
         
         $userManager = new Models\UserManager();
         $oldDataUser = $userManager->getUserById($id);
-        if (isset($_FILES['photo']))
+        if (isset($_FILES['image']))
         {
-            $photo = $_FILES['photo'];
+            $photo = $_FILES['image'];
             $extension = pathinfo($photo["name"], PATHINFO_EXTENSION);
             if ($pseudo != null)
             {
@@ -163,17 +197,27 @@ class UserController extends AbstractController
         {
             $nameImage = null;
         }
-        $email = Services\Utils::request('password');
 
         if (!isset($id))
         {
             throw new \Exception("L'utilisateur n'a pas d'id");
         }
 
-        $userManager->updateUser($id, $pseudo, $password, $nameImage, $email);
-
-        header("Location: monCompte");
-        exit();
+        if ($pseudo == null && $nameImage == null && $password == null && $email == null)
+        {
+            header("Location: monCompte");
+            exit();
+        }
+        else 
+        {
+            if ($password != null)
+            {
+                $hashPassword = password_hash($password, PASSWORD_DEFAULT);
+            }
+            $userManager->updateUser($id, $pseudo, $hashPassword, $nameImage, $email);
+            header("Location: monCompte");
+            exit();
+        }
     }
 }
 

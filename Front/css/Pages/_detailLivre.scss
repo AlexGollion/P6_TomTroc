@@ -1,0 +1,89 @@
+.detailLivre {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--main-background-color);
+
+    p {
+        color: var(--gray-color);
+        font-size: 10px;
+        margin-left: 10%;
+        margin-top: 20px;
+    }
+
+    .detailLivreContent {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+
+        img {
+            width: 50%;
+        }
+        
+        .infoLivre {
+            display: flex;
+            flex-direction: column;
+            justify-content: normal;
+            width: 50%;
+            padding: 2%;
+            padding-right: 15%;
+            background-color: var(--second-background-color);
+
+            p {
+                margin-left: 0px;
+                margin-right: 0px;
+                margin-top: 2%;
+                margin-bottom: 2%;
+            }
+            
+            #auteur {
+                color: var(--gray-color);
+                font-size: 16px;
+            }
+            
+            h2 {
+                font-size: 14px;
+                margin-top: 2%;
+                margin-bottom: 2%;
+            }
+            
+            #description {
+                font-size: 16px;
+                color: black;
+                white-space: pre-line;
+                width: 100%;
+            }
+            
+            .proprietaire {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                background-color: white;
+                border: 1px white;
+                border-radius: 25%/75%;
+                padding: 10px;
+                width: 25%;
+                text-decoration: none;
+                color: black;
+
+                span {
+                    font-size: 14px;
+                    margin-left: 10%;
+                }
+
+                img {
+                    border-radius: 50%;
+                    width: 25%;
+                    margin-right: 10%;
+                }
+            }
+
+            .greenBtn {
+                margin-top: 10%;
+
+                input {
+                    width: 100%;
+                }
+            }
+        }
+    }
+}  

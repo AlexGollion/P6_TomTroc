@@ -8,7 +8,7 @@
                 <p id="date">Membre depuis <?= date_diff($user->getDateCreationDateTime(), date_create(date('Y-m-d H:i:s')))->format('%Y ans et %m mois'); ?></p>
                 <p>Bibliothèque</p>
                 <p> <i class="fa-solid fa-pause"></i> <?= count($livres) ?> livres</p>
-                <a href="newMessagerie" class="whiteLink">Écrire un message</a>
+                <a href="newMessagerie&&idUserLivre=<?= $user->getId() ?>" class="whiteLink">Écrire un message</a>
             </div>
     </section>
     

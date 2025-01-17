@@ -12,7 +12,7 @@
             </section>
     
             <label for="photo">Photo</label>
-            <img src=<?= "./Front/images/livres/" . $livre->getImage() ?>>
+            <img id="newImage" src=<?= "./Front/images/livres/" . $livre->getImage() ?>>
             <button class="openModal">modifier la photo</button>
         </section>
         <section id="containerForm">
@@ -27,10 +27,10 @@
                 </textarea>
                 <label for="statut">Disponibilité</label>
                 <select name="statut" id="statut">
-                    <option value="1" <?php if ($livre->getStatut()) { ?> selected <?php } ?>>
+                    <option value="1" <?php if ($livre->getStatutBool()) { ?> selected <?php } ?>>
                         Disponible
                     </option>
-                    <option value="0" <?php if (!$livre->getStatut()) { ?> selected <?php } ?>>
+                    <option value="0" <?php if (!$livre->getStatutBool()) { ?> selected <?php } ?>>
                         Indisponible
                     </option>
                 </select>

@@ -1,0 +1,185 @@
+.monCompte {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--second-background-color);
+    padding-top: 2%;
+    padding-bottom: 2%;
+    padding-left: 10%;
+    padding-right: 10%;
+
+    h1 {
+        margin-bottom: 3%;
+    }
+    
+    .compteInfo {
+        display: flex;
+        flex-direction: row;
+        
+        .compte, .infoPerso {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: white;
+            width: 48%;
+            border-radius: 20px;
+        }
+        
+        .compte {
+            padding-top: 2%;
+            padding-bottom: 5%;
+
+            .compteImg {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                margin-top: 20px;
+                padding-bottom: 20px;
+                border-bottom: 2px solid var(--main-background-color);
+                width: 50%;
+
+                img {
+                    width: 50%;
+                    border-radius: 50%;
+                    margin-bottom: 15px;
+                }
+
+                button {
+                    border: none;
+                    background-color: white;
+                    text-decoration: underline;
+                    color: $gray-color;
+                    margin-bottom: 20px;
+                }
+            }
+
+            
+            .modal {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                gap: 0.4rem;
+                width: 450px;
+                padding: 1.3rem;
+                min-height: 250px;
+                position: absolute;
+                top: 20%;
+                background-color: white;
+                border: 1px solid #ddd;
+                border-radius: 15px;
+                z-index: 2;
+                
+                #image {
+                    display: none;
+                }
+            }
+            
+            .overlay {
+                position: fixed;
+                top: 0;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.5);
+                backdrop-filter: blur(3px);
+                z-index: 1;
+            }
+            
+            .hidden {
+                display: none;
+            }
+
+            .compteLivre {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                margin-top: 15px;
+
+                h2 {
+                    margin-bottom: 0px;
+                }
+                
+                p {
+                    margin-bottom: 0px;
+                    margin-top: 10px;
+                }
+
+                #date {
+                    color: var(--gray-color);
+                    font-size: 14px;
+                    margin-bottom: 8px;
+                    margin-top: 3px;
+                }
+
+                #bibliotheque {
+                    font-size: 12px;
+                }
+
+            }
+        }
+        
+        .infoPerso {
+            margin-left: 4%;
+            
+            h2 {
+                font-size: 16px;
+                font-weight: 400;
+                width: 50%;
+                margin-bottom: 25px;
+                margin-top: 25px;
+            }
+
+            form {
+                display: flex;
+                flex-direction: column;
+                width: 50%;
+                padding-bottom: 20px;
+
+                label {
+                    font-size: 14px;
+                    color: $gray-color;
+                    margin-top: 20px;
+
+                }
+
+                ::placeholder {
+                    color: black;
+                    font-size: 14px;
+                }
+                
+                input {
+                    font-size: 14px;
+                    height: 50px;
+                    width: 100%;
+                    background-color: var(--light-gray-color);
+                    border: none;
+                    margin-top: 10px;
+                    border-radius: 10px;
+                    padding: 5px;
+                    padding-left: 10px;
+                    margin-bottom: 20px;
+                }
+
+                .submit {
+                    background-color: var(--main-background-color);
+                    color: var(--green-color);
+                    border: 1px solid var(--green-color);
+                    font-size: 16px;
+                    border-radius: 10px;
+                    margin-top: 25px;
+                    margin-bottom: 10px;
+                    padding: 15px;
+                    font-weight: bold;
+                    width: 45%;
+                }
+
+                #image {
+                    display: none;
+                }
+            }
+        }
+    }
+}
+
+
