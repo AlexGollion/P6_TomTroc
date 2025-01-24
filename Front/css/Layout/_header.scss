@@ -33,7 +33,11 @@ header {
         flex-direction: row;
         align-items: center;
         justify-content: space-between;
-
+        
+        h3 {
+            color: var(--green-color);
+        }
+        
         .logo {
             position: relative;
             background-color: var(--green-color);
@@ -44,9 +48,6 @@ header {
             width: 35px;
             height: 35px;
 
-            h3 {
-                color: var(--green-color);
-            }
 
             .logoP1, .logoP2 {
                 position: absolute;

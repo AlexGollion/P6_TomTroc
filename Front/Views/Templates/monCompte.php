@@ -72,5 +72,5 @@
             </tr>
         <?php } ?>
     </table>
-    <a href="showAddLivre" class="greenLink">Ajouter un livre</a>
+    <a href="showAddLivre" class="button greenLink">Ajouter un livre</a>
     </section>

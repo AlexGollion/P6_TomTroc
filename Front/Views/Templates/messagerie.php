@@ -18,14 +18,21 @@
         <?php foreach($conversations as $conv) { ?>
             <a href="messagerie&idConv=<?= $conv->getId() ?>" <?php if($conv->getId() == $selected) { ?> class="convSelected" <?php } ?>>
                 <div class="imgConv">
+                <?php if ($conv->getUsers()[0]->getPhoto() != null) { ?>
                     <img src="./Front/images/profils/<?= $conv->getUsers()[0]->getPhoto() ?>" alt="">
+                <?php } if ($conv->getUsers()[1]->getPhoto() != null) {?>
                     <img src="./Front/images/profils/<?= $conv->getUsers()[1]->getPhoto() ?>" alt="">
+                <?php } ?>
                 </div>
                 <div class="listeConversationContent">
-                    <h3><?= $conv->getNom() ?></h3>
+                    <div class="headerListeConversation">
+                        <h3><?= $conv->getNom() ?></h3>
+                    <?php if($conv->getLastMessage() != null) { ?>
+                        <p class="dateLastMessage"><?= $conv->getLastMessage()->getDateCreationDateTime()->format("H:i") ?></p>
+                    <?php } ?>
+                    </div>
                     <?php if($conv->getLastMessage() != null) { ?>
                         <p><?= $conv->getLastMessage()->getContent() ?></p>
-                        <p class="dateLastMessage"><?= $conv->getLastMessage()->getDateCreationDateTime()->format("H:i") ?></p>
                     <?php } ?>
                 </div>
             </a>
@@ -36,8 +43,11 @@
         <section class="sectionMessage">
             <div class="sectionMessageNom">
                 <div class="imgConv">
+                <?php if ($conv->getUsers()[0]->getPhoto() != null) { ?>
                     <img src="./Front/images/profils/<?= $conv->getUsers()[0]->getPhoto() ?>" alt="">
+                <?php } if ($conv->getUsers()[1]->getPhoto() != null) {?>
                     <img src="./Front/images/profils/<?= $conv->getUsers()[1]->getPhoto() ?>" alt="">
+                <?php } ?>
                 </div>
                 <h3><?= $conv->getNom() ?></h3>
             </div>

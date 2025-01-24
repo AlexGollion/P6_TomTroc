@@ -7,7 +7,7 @@
             "hidden" => [
                 ["name" => "idUserLivre", "value" => $user->getId()]
             ],
-            "class" => "greenBtn"
+            "class" => "button greenLink"
         ]
     );
 ?>
@@ -16,20 +16,20 @@
     <p>Nos livres > <?= $livre->getTitre() ?></p>
     <div class="detailLivreContent">
         <img src=<?= "./Front/images/livres/" . $livre->getImage() ?>>
-
         <section class="infoLivre">
             <h1><?= $livre->getTitre() ?></h1>
             <p id="auteur">par <?= $livre->getAuteur() ?></p>
-            <h2>description</h2>
+            <hr />
+            <h2>DESCRIPTION</h2>
             <p id="description"><?= $livre->getDescription() ?></p>
-            <h2>Propiétaire</h2>
+            <h2>PROPRIETAIRE</h2>
             <a href="comptePublic&userId=<?= $user->getId() ?>" class="proprietaire">
                 <?php if ($user->getPhoto() != null) { ?>
                     <img src=<?= "./Front/images/profils/" . $user->getPhoto() ?>>
                 <?php } ?>
                 <span><?= $user->getPseudo() ?></span>
             </a>
-            <?= TomTroc\Front\Components\Component::render($messageBtn) ?>
+            <a href="newMessagerie&&idUserLivre=<?= $user->getId() ?>" class="button greenLink">Envoyer un message</a>
         </section>
     </div>
 </section>

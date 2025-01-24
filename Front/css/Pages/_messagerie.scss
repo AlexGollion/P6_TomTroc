@@ -33,34 +33,57 @@
             .imgConv {
                 display: flex;
                 align-items: center;
+                position: relative;
                 width: 22%;
                 margin-right: 7%;
                 margin-left: 2%;
 
                 img {
-                   border-radius: 50%
+                   border-radius: 50%;
                 }
+                
+                img:nth-child(1) {
+                    position: absolute;
+                    left: 0px;
+                }
+                
+                img:nth-child(2) {
+                    position: absolute;
+                    left: 15px;
+                }
+
             }
+            
             
             .listeConversationContent {
                 width: 45%;
-                position: relative;
                 padding-top: 5px;
                 margin-left: 7%;
+
+                .headerListeConversation {
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
+
+                    h3 {
+                        font-weight: 500;
+                    }
+    
+                    h3, .dateLastMessage {
+                        color: black;
+                        font-size: 14px;
+                        margin-bottom: 15px;
+                        overflow: auto;
+                        white-space: wrap;
+                        text-overflow: inherit;
+                    }
+
+                }
 
                 h3, p {
                     margin: 0px;
                 }
 
-                h3 {
-                    font-weight: 500;
-                }
-
-                h3, .dateLastMessage {
-                    color: black;
-                    font-size: 14px;
-                    margin-bottom: 15px;
-                }
 
                 p {
                     color: var(--gray-color);
@@ -69,13 +92,6 @@
                     text-overflow: ellipsis;
                     white-space: nowrap;
 
-                }
-
-                .dateLastMessage {
-                    position: absolute;
-                    top: 5px;
-                    right: 0px;
-                    font-weight: 400;
                 }
             }
         }
@@ -98,12 +114,23 @@
             .imgConv {
                 display: flex;
                 align-items: center;
+                position: relative;
                 width: 22%;
                 margin-right: 7%;
                 margin-left: 2%;
 
                 img {
                    border-radius: 50%
+                }
+
+                img:nth-child(1) {
+                    position: absolute;
+                    left: 0px;
+                }
+                
+                img:nth-child(2) {
+                    position: absolute;
+                    left: 15px;
                 }
             }
 

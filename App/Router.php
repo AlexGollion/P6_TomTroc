@@ -31,7 +31,7 @@ class Router
 
     public static function chooseRoute(string $action) : void
     {
-        array_key_exists($action, self::$routes) ? self::middlewareCheck($action) : throw new \Exception('Routes inconnue');;
+        array_key_exists($action, self::$routes) ? self::middlewareCheck($action) : throw new \Exception('Erreur 404: Routes inconnue');;
     }
     
     private static function middlewareCheck(string $action)

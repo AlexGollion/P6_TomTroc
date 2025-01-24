@@ -7,7 +7,7 @@
             partage de connaissances et d'histoires à <br>
             travers les livres
         </p>
-        <a href="home" class="greenLink">Découvrir</a>
+        <a href="home" class="button greenLink">Découvrir</a>
     </div>
     <div class="joinImg">
         <img src="./Front/images/static/hamza-nouasria-accueil.png">
@@ -27,7 +27,7 @@
         </a>
     <?php } ?>
     </div>
-    <a href="showAllLivres" class="greenLink">Voir tous les livres</a>
+    <a href="showAllLivres" class="button greenLink">Voir tous les livres</a>
 </section>
 
 <section class="marche">
@@ -48,7 +48,7 @@
             </div>
 
         </section>
-    <a href="showAllLivres" class="whiteLink">Voir tous les livres</a>
+    <a href="showAllLivres" class="button whiteLink">Voir tous les livres</a>
 </section>
 
 <img src="./Front/images/static/clay-banks-accueil.png">
