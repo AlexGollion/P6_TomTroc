@@ -106,6 +106,7 @@ header, .join, .marche, .valeur, .error, .dernierAjout, .livres, .monCompte, .ta
   flex-direction: row;
   width: 100%;
   border: none;
+  padding-bottom: 2%;
 }
 .tableau table tr th {
   font-size: 14px;
@@ -123,7 +124,8 @@ header, .join, .marche, .valeur, .error, .dernierAjout, .livres, .monCompte, .ta
   align-items: center;
   width: 20%;
   font-size: 14px;
-  padding: 2%;
+  padding-left: 2%;
+  padding-right: 2%;
   overflow: hidden;
   height: 60px;
 }
@@ -138,6 +140,13 @@ header, .join, .marche, .valeur, .error, .dernierAjout, .livres, .monCompte, .ta
 }
 .tableau table tr td img {
   width: 50%;
+}
+.tableau table tr .description {
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  line-clamp: 4;
+  -webkit-box-orient: vertical;
+  height: 70px;
 }
 .tableau table tr .first {
   padding-left: 4%;
@@ -891,12 +900,8 @@ footer .logo .logoP2 {
   height: 100%;
   table-layout: fixed;
 }
-.comptePublic .tableau table td {
-  white-space: line;
-  height: 80px;
-  max-width: 20%;
-  text-overflow: ellipsis;
-  text-align: left;
+.comptePublic .tableau table th, .comptePublic .tableau table td {
+  width: 25%;
 }
 
 .editLivre {
@@ -947,7 +952,7 @@ footer .logo .logoP2 {
   width: 80%;
   text-align: end;
 }
-.editLivre .editMain .previewImageLivre label {
+.editLivre .editMain .previewImageLivre span {
   font-size: 14px;
   color: var(--gray-color);
   margin-top: 25px;

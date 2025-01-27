@@ -18,7 +18,7 @@
         <div class="compte">
             <div class="compteImg">
                 <?php if ($user->getPhoto() != null) { ?>
-                    <img class="photoProfil" id="newImage" src="./Front/images/profils/<?= $user->getPhoto() ?>" alt="" >
+                    <img class="photoProfil" id="newImage" src="./Front/images/profils/<?= $user->getPhoto() ?>" alt="photo de profil de <?= $user->getPseudo() ?>" >
                 <?php } else { ?>
                     <img class="photoProfil" id="newImage" src="" alt="" >
                 <?php } ?>
@@ -59,10 +59,10 @@
         
         <?php foreach($livres as $index => $livre) { ?>
             <tr class="<?= TomTroc\Services\Utils::changeColorTableau($index) ?>">
-                <td class="first"><img src=<?= "./Front/images/livres/" . $livre->getImage() ?>></td>
+                <td class="first"><img src=<?= "./Front/images/livres/" . $livre->getImage() ?> alt="Image du livre <?= $livre->getTitre() ?>"></td>
                 <td><?= $livre->getTitre() ?></td>
                 <td><?= $livre->getAuteur() ?></td>
-                <td><div><?= $livre->getDescription() ?></div></td>
+                <td class="description"><?= $livre->getDescription() ?></td>
                 <td class="<?= $livre->getStatut() ?>"><p><?= $livre->getStatut() ?></p></td>
                 <td>
                     <a href="editLivre&idLivre=<?= $livre->getId() ?>" class="editLink <?= TomTroc\Services\Utils::changeColorTableau($index)?>">Éditer</a>

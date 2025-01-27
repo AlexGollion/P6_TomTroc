@@ -19,9 +19,9 @@
             <a href="messagerie&idConv=<?= $conv->getId() ?>" <?php if($conv->getId() == $selected) { ?> class="convSelected" <?php } ?>>
                 <div class="imgConv">
                 <?php if ($conv->getUsers()[0]->getPhoto() != null) { ?>
-                    <img src="./Front/images/profils/<?= $conv->getUsers()[0]->getPhoto() ?>" alt="">
+                    <img src="./Front/images/profils/<?= $conv->getUsers()[0]->getPhoto() ?>" alt="photo de profil de <?= $conv->getUsers()[0]->getPseudo() ?>">
                 <?php } if ($conv->getUsers()[1]->getPhoto() != null) {?>
-                    <img src="./Front/images/profils/<?= $conv->getUsers()[1]->getPhoto() ?>" alt="">
+                    <img src="./Front/images/profils/<?= $conv->getUsers()[1]->getPhoto() ?>" alt="photo de profil de <?= $conv->getUsers()[1]->getPseudo() ?>">
                 <?php } ?>
                 </div>
                 <div class="listeConversationContent">
@@ -44,9 +44,9 @@
             <div class="sectionMessageNom">
                 <div class="imgConv">
                 <?php if ($conv->getUsers()[0]->getPhoto() != null) { ?>
-                    <img src="./Front/images/profils/<?= $conv->getUsers()[0]->getPhoto() ?>" alt="">
+                    <img src="./Front/images/profils/<?= $conv->getUsers()[0]->getPhoto() ?>" alt="photo de profil de <?= $conv->getUsers()[0]->getPseudo() ?>">
                 <?php } if ($conv->getUsers()[1]->getPhoto() != null) {?>
-                    <img src="./Front/images/profils/<?= $conv->getUsers()[1]->getPhoto() ?>" alt="">
+                    <img src="./Front/images/profils/<?= $conv->getUsers()[1]->getPhoto() ?>" alt="photo de profil de <?= $conv->getUsers()[1]->getPseudo() ?>">
                 <?php } ?>
                 </div>
                 <h3><?= $conv->getNom() ?></h3>

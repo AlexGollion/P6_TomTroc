@@ -15,7 +15,7 @@
 <section class="detailLivre">
     <p>Nos livres > <?= $livre->getTitre() ?></p>
     <div class="detailLivreContent">
-        <img src=<?= "./Front/images/livres/" . $livre->getImage() ?>>
+        <img src=<?= "./Front/images/livres/" . $livre->getImage() ?> alt="Image du livre <?= $livre->getTitre() ?>">
         <section class="infoLivre">
             <h1><?= $livre->getTitre() ?></h1>
             <p id="auteur">par <?= $livre->getAuteur() ?></p>
@@ -25,7 +25,7 @@
             <h2>PROPRIETAIRE</h2>
             <a href="comptePublic&userId=<?= $user->getId() ?>" class="proprietaire">
                 <?php if ($user->getPhoto() != null) { ?>
-                    <img src=<?= "./Front/images/profils/" . $user->getPhoto() ?>>
+                    <img src=<?= "./Front/images/profils/" . $user->getPhoto() ?> alt="photo de profil de <?= $user->getPseudo() ?>">
                 <?php } ?>
                 <span><?= $user->getPseudo() ?></span>
             </a>

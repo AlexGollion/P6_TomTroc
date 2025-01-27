@@ -11,8 +11,8 @@
                 <button class="closeModal">Valider</button>
             </section>
     
-            <label for="photo">Photo</label>
-            <img id="newImage" src=<?= "./Front/images/livres/" . $livre->getImage() ?>>
+            <span>Photo</span>
+            <img id="newImage" src=<?= "./Front/images/livres/" . $livre->getImage() ?> alt="Image du livre <?= $livre->getTitre() ?>">
             <button class="openModal">modifier la photo</button>
         </section>
         <section id="containerForm">

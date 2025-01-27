@@ -41,5 +41,5 @@
         <p><?= $span ?> <a href=<?= $action ?> ><?= $aText ?> </a> </p>
     </div>
 
-    <img src="./Front/images/static/marialaura-gionfriddo-inscription.png">
+    <img src="./Front/images/static/marialaura-gionfriddo-inscription.png" alt="Image d'une librairie">
 </section>

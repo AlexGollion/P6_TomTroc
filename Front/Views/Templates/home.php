@@ -10,9 +10,9 @@
         <a href="home" class="button greenLink">Découvrir</a>
     </div>
     <div class="joinImg">
-        <img src="./Front/images/static/hamza-nouasria-accueil.png">
+        <img src="./Front/images/static/hamza-nouasria-accueil.png" alt="Une personne entouré de piles de livres">
         <span>Hamza</span>
-    <div>
+    </div>
 </section>
 
 <section class="dernierAjout">
@@ -20,7 +20,7 @@
     <div class="livreHome">
     <?php foreach($livres as $index => $livre) {  ?>
         <a href="detailLivre&idLivre=<?= $livre["livre"]->getId() ?>">
-            <img src=<?= "./Front/images/livres/" . $livre["livre"]->getImage() ?>>
+            <img src=<?= "./Front/images/livres/" . $livre["livre"]->getImage() ?> alt="Image du livre <?= $livre["livre"]->getTitre() ?>">
             <h2><?= $livre["livre"]->getTitre() ?></h2>
             <h3><?= $livre["livre"]->getAuteur() ?></h3>
             <p>Vendu par : <?= $livre["user"] ?></p>
@@ -32,7 +32,7 @@
 
 <section class="marche">
     <h2>Comment ça marche ?</h2>
-    <p>Échanger des livres avec TomTroc c'est simple et <br> amusant ! Suivez ces étapes pour commencer :<p>
+    <p>Échanger des livres avec TomTroc c'est simple et <br> amusant ! Suivez ces étapes pour commencer :</p>
         <section class="cardMarche">
             <div>
                 <p>Inscrivez-vous<br> gratuitement sur<br> notre plateforme.</p>
@@ -51,7 +51,7 @@
     <a href="showAllLivres" class="button whiteLink">Voir tous les livres</a>
 </section>
 
-<img src="./Front/images/static/clay-banks-accueil.png">
+<img src="./Front/images/static/clay-banks-accueil.png" alt="image d'une librairie">
 
 <section class="valeur">
     <div class="valeurContent">
@@ -74,7 +74,7 @@
         sur les étagères.</p>
         <div>
             <span>L'équipe Tom Troc</span>
-            <img src="./Front/images/static/Vector.png">
+            <img src="./Front/images/static/Vector.png" alt="Un coeur">
         </div>
     </div>    
 </section>

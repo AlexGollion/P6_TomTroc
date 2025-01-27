@@ -68,13 +68,10 @@
             height: 100%;
             table-layout: fixed;
 
-            td {
-                white-space: line;
-                height: 80px;
-                max-width: 20%;
-                text-overflow: ellipsis;
-                text-align: left;
+            th, td {
+                width: 25%;
             }
+
         }
     }
 }

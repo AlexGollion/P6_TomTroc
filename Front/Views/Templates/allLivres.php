@@ -9,7 +9,7 @@
     <section class="grilleLivre">
     <?php foreach($livres as $index => $livre) {  ?>
         <a href="detailLivre&idLivre=<?= $livre["livre"]->getId() ?>">
-            <img src=<?= "./Front/images/livres/" . $livre["livre"]->getImage() ?>>
+            <img src=<?= "./Front/images/livres/" . $livre["livre"]->getImage() ?> alt="Image du livre <?= $livre["livre"]->getTitre() ?>">
             <h2><?= $livre["livre"]->getTitre() ?></h2>
             <h3><?= $livre["livre"]->getAuteur() ?></h3>
             <p>Vendu par : <?= $livre["user"] ?></p>

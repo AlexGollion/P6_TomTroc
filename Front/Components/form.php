@@ -4,7 +4,7 @@
 
 <form class="<?= $formData["class"] ?>" action=<?= $formData["action"] ?> method="post" enctype="multipart/form-data">
     <?php foreach($formData["label"] as $index => $label) { ?>
-        <label for=<?= $label ?>> <?= $label ?> </label>
+        <label for=<?= $formData["input"][$index] ?>> <?= $label ?> </label>
         <?php if (isset($formData["placeholder"])) { ?>
             <input type=<?= $formData["type"][$index] ?> id=<?= $formData["input"][$index] ?> name=<?= $formData["input"][$index] ?> 
             placeholder=<?= $formData["placeholder"][$index] ?> />
