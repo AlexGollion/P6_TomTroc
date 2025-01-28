@@ -1092,9 +1092,6 @@ footer .logo .logoP2 {
   flex-direction: row;
   justify-content: space-between;
 }
-.messagerie .listeConversation a .listeConversationContent .headerListeConversation h3 {
-  font-weight: 500;
-}
 .messagerie .listeConversation a .listeConversationContent .headerListeConversation h3, .messagerie .listeConversation a .listeConversationContent .headerListeConversation .dateLastMessage {
   color: black;
   font-size: 14px;
@@ -1102,6 +1099,11 @@ footer .logo .logoP2 {
   overflow: auto;
   white-space: wrap;
   text-overflow: inherit;
+}
+.messagerie .listeConversation a .listeConversationContent .headerListeConversation h3 {
+  font-weight: 500;
+  overflow: hidden;
+  max-width: 50%;
 }
 .messagerie .listeConversation a .listeConversationContent h3, .messagerie .listeConversation a .listeConversationContent p {
   margin: 0px;
@@ -1212,4 +1214,17 @@ footer .logo .logoP2 {
   padding: 10px;
   width: 15%;
   height: 50px;
+}
+
+.error {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 5%;
+  padding-bottom: 5%;
+}
+.error a {
+  text-decoration: underline;
+  color: black;
 }/*# sourceMappingURL=main.css.map */

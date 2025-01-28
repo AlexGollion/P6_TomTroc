@@ -144,7 +144,7 @@ class MessageManager extends AbstractEntityManager
         while ($i < count($users))
         {
             $res = $res . $users[$i]->getPseudo();
-            if (!($i < (count($users) - 1)))
+            if ($i < (count($users) - 1))
             {
                 $res = $res . "_";
             }
