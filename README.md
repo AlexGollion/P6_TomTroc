@@ -15,4 +15,4 @@ Ce fichier contient notamment les informations de connextion √† la base de donn√
 Pour vous connecter :
     - email: "test@gmail.com", mot de passe: "test" (attention aux majuscules)
     - email: "admin@gmail.com", mot de passe: "admin" (attention aux majuscules)
-    - email: "dernierTest@gmail.com", mot de passe: "dernierTest" (attention aux majuscules)
+    - email: "test2@gmail.com", mot de passe: "test2" (attention aux majuscules)

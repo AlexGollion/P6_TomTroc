@@ -19,7 +19,6 @@
             flex-direction: row;
             width: 100%;
             border: none;
-            padding-bottom: 2%;
 
             th {
                 font-size: 14px;
@@ -38,10 +37,8 @@
                 align-items: center;
                 width: 20%;
                 font-size: 14px;
-                padding-left: 2%;
-                padding-right: 2%;
+                padding: 2%;
                 overflow: hidden;
-                height: 60px;
 
                 div {
                     display: flex;

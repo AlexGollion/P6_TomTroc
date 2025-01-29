@@ -21,7 +21,7 @@
                 <label for="auteur">Auteur</label>
                 <input type="text" id="auteur" name="auteur"/>
                 <label for="description">Commentaire</label>
-                <textarea id="description" name="description"></textarea>
+                <textarea id="description" name="description" row="15"></textarea>
                 <label for="statut">Disponibilité</label>
                 <select name="statut" id="statut">
                     <option value="1">
