@@ -71,7 +71,7 @@ class MessagerieController extends AbstractController
             $idConv = $messageManager->checkIfConvExist($idSession, $idUserLivre);
         }
 
-        header("Location: messagerie");
+        header("Location: messagerie&idConv=" . $idConv);
         exit();
     }
 
